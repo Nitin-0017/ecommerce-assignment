@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
+import ProductCard from "../components/ProductCard";
 import "../styles/Home.css";
 
 const Home = () => {
@@ -40,12 +41,7 @@ const Home = () => {
         <div className="products">
           {filteredProducts.length > 0 ? (
             filteredProducts.map((product) => (
-              <div className="product" key={product.id}>
-                <img src={product.image} alt={product.title} />
-                <h3>{product.title}</h3>
-                <p>${product.price}</p>
-                <button className="add-to-cart-btn">Add to Cart</button>{" "}
-              </div>
+              <ProductCard key={product.id} product={product} />
             ))
           ) : (
             <p style={{ marginTop: "2rem", textAlign: "center" }}>
@@ -70,7 +66,7 @@ const Home = () => {
               customer service is unmatched. My recent order arrived earlier
               than expected!"
             </p>
-            <div className="stars">★★★★</div>
+            <div className="stars">★★★★★</div>
           </div>
 
           <div className="testimonial-card">

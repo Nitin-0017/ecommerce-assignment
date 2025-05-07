@@ -73,12 +73,34 @@
     gap: 2rem;
   }
   
-  .product {
+  /* Update the .product class to include a light border and improved styling */
+.product {
     background: white;
     padding: 1rem;
     border-radius: 12px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
     text-align: center;
+    border: 1px solid #e0e0e0; /* Light border */
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  }
+  
+  .product:hover {
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1); /* Subtle hover effect */
+    transform: translateY(-5px); /* Slight lift effect */
+  }
+  
+  /* Price styling */
+  .product p {
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: #ff6f61; /* Price highlighted color */
+    margin-top: 1rem;
+    transition: color 0.3s ease-in-out;
+  }
+  
+  /* Price color change on hover */
+  .product:hover p {
+    color: #ff3b2b; /* Darker shade of the price on hover */
   }
   
   .product img {
@@ -106,4 +128,112 @@
     color: white;
     padding: 2rem;
     text-align: center;
+  }
+
+  .hero {
+    background-color: #E0E7FF;
+    padding: 4rem 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .hero-content {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 20rem;
+    max-width: 1200px;
+  }
+  
+  .hero-text {
+    flex: 1 1 300px;
+  }
+  
+  .hero-image {
+    flex: 1 1 300px;
+    max-width: 350px;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  }
+
+  .testimonial-heading {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    font-weight: 700;
+  }
+  
+  .testimonial-cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+    padding: 0 1rem;
+  }
+  
+  .testimonial-card {
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    padding: 1.5rem;
+    max-width: 300px;
+    text-align: left;
+    transition: transform 0.3s ease;
+  }
+  
+  .testimonial-card:hover {
+    transform: translateY(-5px);
+  }
+  
+  .testimonial-card img {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    margin-bottom: 0.8rem;
+  }
+  
+  .testimonial-card h3 {
+    margin: 0.3rem 0;
+    font-weight: 600;
+  }
+  
+  .role {
+    font-size: 0.9rem;
+    color: #777;
+    margin-bottom: 0.6rem;
+  }
+  
+  .quote {
+    font-size: 0.95rem;
+    color: #333;
+    margin-bottom: 1rem;
+  }
+  
+  .stars {
+    color: #ffc107;
+    font-size: 1.2rem;
+  }
+
+  .add-to-cart-btn {
+    background-color: var(--primary); /* Same color as the navbar */
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 1rem;
+  }
+  
+  /* Button hover effect */
+  .add-to-cart-btn:hover {
+    background-color: #3730a3; /* Darker shade on hover */
+  }
+  
+  /* Optional: Button focus state */
+  .add-to-cart-btn:focus {
+    outline: none;
+    box-shadow: 0 0 5px rgba(79, 70, 229, 0.5);
   }
