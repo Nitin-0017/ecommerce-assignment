@@ -1,45 +1,106 @@
-import React, { useEffect, useState } from 'react';
-import Navbar from '../components/Navbar';
-import Footer from '../components/Footer';
-import '../styles/Home.css';
+import React, { useEffect, useState } from "react";
+import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
+import "../styles/Home.css";
 
 const Home = () => {
   const [products, setProducts] = useState([]);
+  const [searchQuery, setSearchQuery] = useState("");
 
   useEffect(() => {
-    fetch('https://fakestoreapi.com/products')
-      .then(res => res.json())
-      .then(data => setProducts(data.slice(0, 8)));
+    fetch("https://fakestoreapi.com/products")
+      .then((res) => res.json())
+      .then((data) => setProducts(data));
   }, []);
+
+  const filteredProducts = products.filter((product) =>
+    product.title.toLowerCase().startsWith(searchQuery.toLowerCase())
+  );
 
   return (
     <>
-      <Navbar />
+      <Navbar searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
 
       <section className="hero">
-        <h1>Shop the Latest Trends</h1>
-        <p>Discover amazing products at unbeatable prices</p>
+        <div className="hero-content">
+          <div className="hero-text">
+            <h1>Shop the Latest Trends</h1>
+            <p>Discover amazing products at unbeatable prices</p>
+          </div>
+          <img
+            className="hero-image"
+            src="https://i.pinimg.com/736x/69/4e/95/694e952517fe9139e14a7a65d4cfaa4b.jpg"
+            alt="Trendy fashion"
+          />
+        </div>
       </section>
 
       <section className="section" id="products">
         <h2>Featured Products</h2>
         <div className="products">
-          {products.map(product => (
-            <div className="product" key={product.id}>
-              <img src={product.image} alt={product.title} />
-              <h3>{product.title}</h3>
-              <p>${product.price}</p>
-            </div>
-          ))}
+          {filteredProducts.length > 0 ? (
+            filteredProducts.map((product) => (
+              <div className="product" key={product.id}>
+                <img src={product.image} alt={product.title} />
+                <h3>{product.title}</h3>
+                <p>${product.price}</p>
+                <button className="add-to-cart-btn">Add to Cart</button>{" "}
+                {/* Add to Cart button */}
+              </div>
+            ))
+          ) : (
+            <p style={{ marginTop: "2rem", textAlign: "center" }}>
+              No products found.
+            </p>
+          )}
         </div>
       </section>
 
       <section className="section" id="testimonials">
-        <h2>What Our Customers Say</h2>
-        <div className="testimonials">
-          <div className="testimonial">"Absolutely love the quality and fast shipping!" - Sarah</div>
-          <div className="testimonial">"This is my favorite online store now." - Mike</div>
-          <div className="testimonial">"A+ service and amazing prices." - Lisa</div>
+        <h2 className="testimonial-heading">What Our Customers Say</h2>
+        <div className="testimonial-cards">
+          <div className="testimonial-card">
+            <img
+              src="https://randomuser.me/api/portraits/women/68.jpg"
+              alt="Sarah"
+            />
+            <h3>Sarah Johnson</h3>
+            <p className="role">Verified Customer</p>
+            <p className="quote">
+              "I've been shopping here for years. The quality of products and
+              customer service is unmatched. My recent order arrived earlier
+              than expected!"
+            </p>
+            <div className="stars">★★★★★</div>
+          </div>
+
+          <div className="testimonial-card">
+            <img
+              src="https://randomuser.me/api/portraits/men/32.jpg"
+              alt="Michael"
+            />
+            <h3>Michael Chen</h3>
+            <p className="role">Verified Customer</p>
+            <p className="quote">
+              "The checkout process was seamless, and the products exceeded my
+              expectations. Will definitely be a returning customer!"
+            </p>
+            <div className="stars">★★★★★</div>
+          </div>
+
+          <div className="testimonial-card">
+            <img
+              src="https://randomuser.me/api/portraits/women/65.jpg"
+              alt="Emily"
+            />
+            <h3>Emily Rodriguez</h3>
+            <p className="role">Verified Customer</p>
+            <p className="quote">
+              "I love the variety of products available here. Found exactly what
+              I was looking for and at a competitive price. Highly recommend!"
+            </p>
+            <div className="stars">★★★★★</div>
+          </div>
         </div>
       </section>
 
