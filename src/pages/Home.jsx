@@ -45,7 +45,6 @@ const Home = () => {
                 <h3>{product.title}</h3>
                 <p>${product.price}</p>
                 <button className="add-to-cart-btn">Add to Cart</button>{" "}
-                {/* Add to Cart button */}
               </div>
             ))
           ) : (
@@ -71,7 +70,7 @@ const Home = () => {
               customer service is unmatched. My recent order arrived earlier
               than expected!"
             </p>
-            <div className="stars">★★★★★</div>
+            <div className="stars">★★★★</div>
           </div>
 
           <div className="testimonial-card">
