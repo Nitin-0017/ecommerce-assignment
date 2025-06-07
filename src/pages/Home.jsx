@@ -1,20 +1,20 @@
-import React, { useEffect, useState } from "react";
-import Navbar from "../components/Navbar";
-import Footer from "../components/Footer";
-import ProductCard from "../components/ProductCard";
-import "../styles/Home.css";
+import React, { useEffect, useState } from 'react';
+import Navbar from '../components/Navbar';
+import Footer from '../components/Footer';
+import ProductCard from '../components/ProductCard';
+import '../styles/Home.css';
 
-const Home = () => {
+const Home = ({ addToCart }) => {
   const [products, setProducts] = useState([]);
-  const [searchQuery, setSearchQuery] = useState("");
+  const [searchQuery, setSearchQuery] = useState('');
 
   useEffect(() => {
-    fetch("https://fakestoreapi.com/products")
-      .then((res) => res.json())
-      .then((data) => setProducts(data));
+    fetch('https://fakestoreapi.com/products')
+      .then(res => res.json())
+      .then(data => setProducts(data));
   }, []);
 
-  const filteredProducts = products.filter((product) =>
+  const filteredProducts = products.filter(product =>
     product.title.toLowerCase().startsWith(searchQuery.toLowerCase())
   );
 
@@ -41,10 +41,14 @@ const Home = () => {
         <div className="products">
           {filteredProducts.length > 0 ? (
             filteredProducts.map((product) => (
-              <ProductCard key={product.id} product={product} />
+              <ProductCard
+                key={product.id}
+                product={product}
+                addToCart={addToCart} // pass addToCart to ProductCard
+              />
             ))
           ) : (
-            <p style={{ marginTop: "2rem", textAlign: "center" }}>
+            <p style={{ marginTop: '2rem', textAlign: 'center' }}>
               No products found.
             </p>
           )}
