@@ -7,6 +7,12 @@ import '../styles/Home.css';
 const Home = ({ addToCart }) => {
   const [products, setProducts] = useState([]);
   const [searchQuery, setSearchQuery] = useState('');
+  const [categoryFilter, setCategoryFilter] = useState('');
+  const [priceFilter, setPriceFilter] = useState('');
+
+  // Contact form states
+  const [formData, setFormData] = useState({ name: '', email: '', message: '' });
+  const [formSubmitted, setFormSubmitted] = useState(false);
 
   useEffect(() => {
     fetch('https://fakestoreapi.com/products')
@@ -14,9 +20,34 @@ const Home = ({ addToCart }) => {
       .then(data => setProducts(data));
   }, []);
 
-  const filteredProducts = products.filter(product =>
-    product.title.toLowerCase().startsWith(searchQuery.toLowerCase())
-  );
+  const filteredProducts = products.filter(product => {
+    const matchesSearch = product.title.toLowerCase().includes(searchQuery.toLowerCase());
+    const matchesCategory = categoryFilter ? product.category === categoryFilter : true;
+    const matchesPrice =
+      priceFilter === '0-500'
+        ? product.price <= 500
+        : priceFilter === '500-1000'
+        ? product.price > 500 && product.price <= 1000
+        : priceFilter === '1000+'
+        ? product.price > 1000
+        : true;
+
+    return matchesSearch && matchesCategory && matchesPrice;
+  });
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({ ...prev, [name]: value }));
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setFormSubmitted(true);
+    setFormData({ name: '', email: '', message: '' });
+    setTimeout(() => {
+      setFormSubmitted(false);
+    }, 3000);
+  };
 
   return (
     <>
@@ -38,13 +69,36 @@ const Home = ({ addToCart }) => {
 
       <section className="section" id="products">
         <h2>Featured Products</h2>
+        <div className="product-filters">
+          <div className="filter-group">
+            <label>Category: </label>
+            <select value={categoryFilter} onChange={(e) => setCategoryFilter(e.target.value)}>
+              <option value="">All</option>
+              <option value="men's clothing">Men</option>
+              <option value="women's clothing">Women</option>
+              <option value="jewelery">Jewellery</option>
+              <option value="electronics">Electronics</option>
+            </select>
+          </div>
+
+          <div className="filter-group">
+            <label>Price: </label>
+            <select value={priceFilter} onChange={(e) => setPriceFilter(e.target.value)}>
+              <option value="">All</option>
+              <option value="0-500">₹0 - ₹500</option>
+              <option value="500-1000">₹500 - ₹1000</option>
+              <option value="1000+">₹1000+</option>
+            </select>
+          </div>
+        </div>
+
         <div className="products">
           {filteredProducts.length > 0 ? (
             filteredProducts.map((product) => (
               <ProductCard
                 key={product.id}
                 product={product}
-                addToCart={addToCart} // pass addToCart to ProductCard
+                addToCart={addToCart}
               />
             ))
           ) : (
@@ -55,14 +109,11 @@ const Home = ({ addToCart }) => {
         </div>
       </section>
 
-      <section className="section" id="testimonials">
+      <section className="section" id="about">
         <h2 className="testimonial-heading">What Our Customers Say</h2>
         <div className="testimonial-cards">
           <div className="testimonial-card">
-            <img
-              src="https://randomuser.me/api/portraits/women/68.jpg"
-              alt="Sarah"
-            />
+            <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Sarah" />
             <h3>Sarah Johnson</h3>
             <p className="role">Verified Customer</p>
             <p className="quote">
@@ -74,10 +125,7 @@ const Home = ({ addToCart }) => {
           </div>
 
           <div className="testimonial-card">
-            <img
-              src="https://randomuser.me/api/portraits/men/32.jpg"
-              alt="Michael"
-            />
+            <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Michael" />
             <h3>Michael Chen</h3>
             <p className="role">Verified Customer</p>
             <p className="quote">
@@ -88,10 +136,7 @@ const Home = ({ addToCart }) => {
           </div>
 
           <div className="testimonial-card">
-            <img
-              src="https://randomuser.me/api/portraits/women/65.jpg"
-              alt="Emily"
-            />
+            <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="Emily" />
             <h3>Emily Rodriguez</h3>
             <p className="role">Verified Customer</p>
             <p className="quote">
@@ -100,6 +145,51 @@ const Home = ({ addToCart }) => {
             </p>
             <div className="stars">★★★★★</div>
           </div>
+        </div>
+      </section>
+
+      <section className="section" id="contact">
+        <h2>Contact Us</h2>
+        <div className="contact-container">
+          <form className="contact-form" onSubmit={handleSubmit}>
+            <label>Name:</label>
+            <input
+              type="text"
+              name="name"
+              placeholder="Your name"
+              value={formData.name}
+              onChange={handleChange}
+              required
+            />
+
+            <label>Email:</label>
+            <input
+              type="email"
+              name="email"
+              placeholder="Your email"
+              value={formData.email}
+              onChange={handleChange}
+              required
+            />
+
+            <label>Message:</label>
+            <textarea
+              name="message"
+              placeholder="Your message"
+              rows="5"
+              value={formData.message}
+              onChange={handleChange}
+              required
+            ></textarea>
+
+            <button type="submit">Send</button>
+
+            {formSubmitted && (
+              <p style={{ color: 'green', marginTop: '1rem', fontWeight: 'bold' }}>
+                ✅ Your message has been sent successfully!
+              </p>
+            )}
+          </form>
         </div>
       </section>
 

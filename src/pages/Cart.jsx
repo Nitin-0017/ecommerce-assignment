@@ -35,7 +35,7 @@ const Cart = ({ cartItems, handleIncrease, handleDecrease, handleRemove }) => {
                 <img src={item.image} alt={item.title} />
                 <div className="cart-info">
                   <h4>{item.title}</h4>
-                  <p>₹{item.price.toLocaleString()}</p>
+                  <p>${item.price.toLocaleString()}</p>
 
                   <div className="quantity-controls">
                     <button onClick={() => handleDecrease(item.id)}>-</button>
@@ -54,7 +54,7 @@ const Cart = ({ cartItems, handleIncrease, handleDecrease, handleRemove }) => {
             ))}
 
             <hr />
-            <h3>Total: ₹{getTotal().toLocaleString()}</h3>
+            <h3>Total: ${getTotal().toLocaleString()}</h3>
           </div>
         )}
 
