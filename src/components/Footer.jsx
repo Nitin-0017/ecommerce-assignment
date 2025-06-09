@@ -7,7 +7,7 @@ const Footer = () => {
       <div className="footer-container">
         
         <div className="footer-section">
-          <h2 className="footer-title">ShopEase</h2>
+          <h2 className="footer-title">SwiftKart</h2>
           <p>Your one-stop destination for quality products at affordable prices. Shop with ease, shop with confidence.</p>
         </div>
 
@@ -37,12 +37,12 @@ const Footer = () => {
           <h3>Contact Us</h3>
           <p>📍 123 Commerce Street, Shopping District, SH 10001</p>
           <p>📞 (123) 456-7890</p>
-          <p>✉️ support@shopease.com</p>
+          <p>✉️ support@swiftkart.com</p>
         </div>
       </div>
 
       <div className="footer-bottom">
-        <p>&copy; 2025 ShopEase. All rights reserved.</p>
+        <p>&copy; 2025 SwiftKart. All rights reserved.</p>
       </div>
     </footer>
   );

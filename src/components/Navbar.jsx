@@ -13,7 +13,7 @@ const Navbar = ({ searchQuery, setSearchQuery }) => {
 
   return (
     <header>
-      <h1>ShopEase</h1>
+      <h1>SwiftKart</h1>
       <nav>
         <a href="#">Home</a>
         <a href="#products">Products</a>
