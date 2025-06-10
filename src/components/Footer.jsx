@@ -6,13 +6,14 @@ const Footer = () => {
     <footer className="footer">
       <div className="footer-container">
         
+      
         <div className="footer-section">
           <h2 className="footer-title">SwiftKart</h2>
           <p>Your one-stop destination for quality products at affordable prices. Shop with ease, shop with confidence.</p>
         </div>
 
         <div className="footer-section">
-          <h3>Quick Links</h3>
+          <h3 className="footer-title">Quick Links</h3>
           <ul>
             <li>Home</li>
             <li>Products</li>
@@ -22,8 +23,9 @@ const Footer = () => {
           </ul>
         </div>
 
+      
         <div className="footer-section">
-          <h3>Customer Service</h3>
+          <h3 className="footer-title">Customer Service</h3>
           <ul>
             <li>FAQ</li>
             <li>Shipping Policy</li>
@@ -33,8 +35,9 @@ const Footer = () => {
           </ul>
         </div>
 
+       
         <div className="footer-section">
-          <h3>Contact Us</h3>
+          <h3 className="footer-title">Contact Us</h3>
           <p>📍 123 Commerce Street, Shopping District, SH 10001</p>
           <p>📞 (123) 456-7890</p>
           <p>✉️ support@swiftkart.com</p>

@@ -1,24 +1,31 @@
-import React from 'react';
+import React, { useState } from 'react';
 import '../styles/Navbar.css';
 import { useNavigate } from 'react-router-dom';
 
-const Navbar = ({ searchQuery, setSearchQuery }) => {
+const Navbar = ({ searchQuery, setSearchQuery, scrollToSection }) => {
+  const [menuOpen, setMenuOpen] = useState(false);
   const navigate = useNavigate();
-  const isLoggedIn = localStorage.getItem('isLoggedIn');
+  const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+  const username = localStorage.getItem('username');
 
   const handleLogout = () => {
     localStorage.removeItem('isLoggedIn');
-    navigate('/login');
+    localStorage.removeItem('username');
+    setMenuOpen(false);
+    navigate('/');
   };
 
   return (
-    <header>
-      <h1>SwiftKart</h1>
-      <nav>
-        <a href="#">Home</a>
-        <a href="#products">Products</a>
-        <a href="#about">About</a>
-        <a href="#contact">Contact</a>
+    <header className="navbar">
+      <h1 className="logo" onClick={() => { setMenuOpen(false); navigate('/home'); }}>SwiftKart</h1>
+
+      <button className="hamburger" onClick={() => setMenuOpen(!menuOpen)}>☰</button>
+
+      <nav className={`nav-links ${menuOpen ? 'open' : ''}`}>
+        <button className="nav-link-btn" onClick={() => { setMenuOpen(false); navigate('/home'); }}>Home</button>
+        <button className="nav-link-btn" onClick={() => { setMenuOpen(false); scrollToSection('products'); }}>Products</button>
+        <button className="nav-link-btn" onClick={() => { setMenuOpen(false); scrollToSection('about'); }}>About</button>
+        <button className="nav-link-btn" onClick={() => { setMenuOpen(false); scrollToSection('contact'); }}>Contact</button>
 
         <input
           type="text"
@@ -28,12 +35,19 @@ const Navbar = ({ searchQuery, setSearchQuery }) => {
           onChange={(e) => setSearchQuery(e.target.value)}
         />
 
-        <button className="nav-btn" onClick={() => navigate('/cart')}>🛒 Cart</button>
+        <button className="nav-btn" onClick={() => { setMenuOpen(false); navigate('/cart'); }}>
+          🛒 Cart
+        </button>
 
-        {!isLoggedIn ? (
-          <button className="nav-btn" onClick={() => navigate('/login')}>Login</button>
+        {isLoggedIn ? (
+          <>
+            <span className="username">Hello, {username}</span>
+            <button className="nav-btn" onClick={handleLogout}>Logout</button>
+          </>
         ) : (
-          <button className="nav-btn" onClick={handleLogout}>Logout</button>
+          <button className="nav-btn" onClick={() => { setMenuOpen(false); navigate('/'); }}>
+            Login / Signup
+          </button>
         )}
       </nav>
     </header>
