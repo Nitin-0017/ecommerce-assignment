@@ -1,13 +1,24 @@
-import React, { useState } from 'react';
-import { Routes, Route } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { Routes, Route, useNavigate } from 'react-router-dom';
 import Home from './pages/Home';
 import Cart from './pages/Cart';
 import Payment from './pages/Payment';
-import Login from './pages/Login.jsx';
-
+import Login from './pages/Login';
+import Signup from './pages/Signup';
+import Welcome from './pages/Welcome';
 
 function App() {
   const [cartItems, setCartItems] = useState([]);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+  const visited = localStorage.getItem('visited');
+  if (!visited) {
+    localStorage.setItem('visited', 'true');
+    navigate('/welcome');
+  }
+}, [navigate]);
+
 
   const addToCart = (product) => {
     const exist = cartItems.find((item) => item.id === product.id);
@@ -46,9 +57,10 @@ function App() {
 
   return (
     <Routes>
+      <Route path="/welcome" element={<Welcome />} />
       <Route path="/login" element={<Login />} />
-
-      <Route path="/" element={<Home addToCart={addToCart} />} />
+      <Route path="/signup" element={<Signup />} />
+      <Route path="/home" element={<Home addToCart={addToCart} />} />
       <Route
         path="/cart"
         element={
@@ -61,6 +73,7 @@ function App() {
         }
       />
       <Route path="/payment" element={<Payment />} />
+      <Route path="/" element={<Home addToCart={addToCart} />} />
     </Routes>
   );
 }

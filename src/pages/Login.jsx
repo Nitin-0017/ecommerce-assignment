@@ -9,12 +9,13 @@ const Login = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    const registeredUser = JSON.parse(localStorage.getItem('registeredUser'));
 
-
-    if (email === 'user@example.com' && password === '123456') {
+    if (registeredUser?.username === email && registeredUser?.password === password) {
       alert('Successfully logged in ✅');
-      localStorage.setItem('isLoggedIn', 'true'); // optional
-      navigate('/'); 
+      localStorage.setItem('isLoggedIn', 'true');
+      localStorage.setItem('username', registeredUser.username);
+      navigate('/home');
     } else {
       alert('Invalid email or password ❌');
     }
@@ -30,12 +31,12 @@ const Login = () => {
       </div>
 
       <form className="login-form" onSubmit={handleSubmit}>
-        <h2>Login to Shopease</h2>
+        <h2>Login to SwiftKart</h2>
 
-        <label>Email Address</label>
+        <label>UserName</label>
         <input
-          type="email"
-          placeholder="Enter your email"
+          type="text"
+          placeholder="Enter your username"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           required

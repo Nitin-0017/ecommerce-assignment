@@ -1,56 +1,97 @@
-header {
-  background: #4f46e5;
-  color: white;
+/* Base styling */
+.navbar {
   padding: 1rem 2rem;
+  background: white;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  color: #003366;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  flex-wrap: wrap;
 }
 
-header h1 {
+.logo {
   font-size: 1.8rem;
-  font-weight: 700;
+  font-weight: bold;
 }
 
-nav {
+.hamburger {
+  display: none;
+  font-size: 2rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.nav-links {
   display: flex;
-  gap: 1.2rem;
   align-items: center;
+  gap: 1rem;
 }
 
-nav a {
-  color: white;
-  text-decoration: none;
-  font-weight: 500;
-  transition: color 0.3s ease;
+/* Make nav link buttons look like links */
+.nav-link-btn {
+  background: none;
+  border: none;
+  color: #003366;
+  font-weight: bold;
+  cursor: pointer;
+  padding: 0;
+  text-align: left;
 }
 
-nav a:hover {
-  color: #fbbf24;
+.nav-link-btn:hover {
+  text-decoration: underline;
+}
+
+
+.search-bar {
+  padding: 0.5rem;
+  border-radius: 5px;
+  border: 2px solid #003366;
+  outline: none;
 }
 
 .nav-btn {
-  background-color: #fbbf24;
+  background-color: #0059b3;
+  color: white;
   border: none;
-  padding: 0.4rem 0.9rem;
-  font-weight: 600;
-  border-radius: 6px;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
   cursor: pointer;
-  transition: background 0.3s ease;
+  transition: background-color 0.3s;
 }
 
 .nav-btn:hover {
-  background-color: #e0a500;
-  color: white;
+  background-color: #004080;
 }
 
-.search-bar {
-  padding: 0.4rem 0.6rem;
-  border-radius: 6px;
-  border: none;
-  font-size: 1rem;
+.username {
+  margin-right: 10px;
+  font-weight: bold;
+}
+
+/* Responsive behavior */
+@media (max-width: 768px) {
+  .hamburger {
+    display: block;
+  }
+
+  .nav-links {
+    flex-direction: column;
+    width: 100%;
+    display: none;
+    margin-top: 1rem;
+  }
+
+  .nav-links.open {
+    display: flex;
+  }
+
+  .nav-links a,
+  .nav-btn,
+  .search-bar {
+    width: 100%;
+    text-align: left;
+  }
 }

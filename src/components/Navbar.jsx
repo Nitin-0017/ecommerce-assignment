@@ -9,11 +9,12 @@ const Navbar = ({ searchQuery, setSearchQuery, scrollToSection }) => {
   const username = localStorage.getItem('username');
 
   const handleLogout = () => {
-    localStorage.removeItem('isLoggedIn');
-    localStorage.removeItem('username');
-    setMenuOpen(false);
-    navigate('/');
-  };
+  localStorage.removeItem('isLoggedIn');
+  localStorage.removeItem('username');
+  localStorage.removeItem('visited'); // Optional
+  setMenuOpen(false);
+  navigate('/signup'); 
+};
 
   return (
     <header className="navbar">
@@ -45,9 +46,10 @@ const Navbar = ({ searchQuery, setSearchQuery, scrollToSection }) => {
             <button className="nav-btn" onClick={handleLogout}>Logout</button>
           </>
         ) : (
-          <button className="nav-btn" onClick={() => { setMenuOpen(false); navigate('/'); }}>
-            Login / Signup
-          </button>
+         <button className="nav-btn" onClick={() => { setMenuOpen(false); navigate('/login'); }}>
+  Login / Signup
+</button>
+
         )}
       </nav>
     </header>
