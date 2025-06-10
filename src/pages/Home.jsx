@@ -10,7 +10,6 @@ const Home = ({ addToCart }) => {
   const [categoryFilter, setCategoryFilter] = useState('');
   const [priceFilter, setPriceFilter] = useState('');
 
-  // Contact form states
   const [formData, setFormData] = useState({ name: '', email: '', message: '' });
   const [formSubmitted, setFormSubmitted] = useState(false);
 
@@ -85,9 +84,9 @@ const Home = ({ addToCart }) => {
             <label>Price: </label>
             <select value={priceFilter} onChange={(e) => setPriceFilter(e.target.value)}>
               <option value="">All</option>
-              <option value="0-500">₹0 - ₹500</option>
-              <option value="500-1000">₹500 - ₹1000</option>
-              <option value="1000+">₹1000+</option>
+              <option value="0-500">$0 - $500</option>
+              <option value="500-1000">$500 - $1000</option>
+              <option value="1000+">$1000+</option>
             </select>
           </div>
         </div>
