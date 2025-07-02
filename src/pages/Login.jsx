@@ -33,7 +33,7 @@ const Login = () => {
       <form className="login-form" onSubmit={handleSubmit}>
         <h2>Login to SwiftKart</h2>
 
-        <label>UserName</label>
+        <label>Email Address</label>
         <input
           type="text"
           placeholder="Enter your username"

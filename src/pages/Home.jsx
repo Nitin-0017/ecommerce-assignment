@@ -2,6 +2,7 @@ import React, { useEffect, useState, useRef } from 'react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import ProductCard from '../components/ProductCard';
+import BottomNav from '../components/BottomNav';
 import '../styles/Home.css';
 
 const Home = ({ addToCart }) => {
@@ -10,9 +11,11 @@ const Home = ({ addToCart }) => {
   const [categoryFilter, setCategoryFilter] = useState('');
   const [priceFilter, setPriceFilter] = useState('');
 
+ 
   const [formData, setFormData] = useState({ name: '', email: '', message: '' });
   const [formSubmitted, setFormSubmitted] = useState(false);
 
+ 
   const productsRef = useRef(null);
   const aboutRef = useRef(null);
   const contactRef = useRef(null);
@@ -205,7 +208,7 @@ const Home = ({ addToCart }) => {
           </div>
         </div>
       </section>
-
+      <BottomNav/>
       <Footer />
     </>
   );
