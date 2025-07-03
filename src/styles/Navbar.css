@@ -1,7 +1,11 @@
-/* Base styling */
 .navbar {
-  padding: 1rem 2rem;
+  position: fixed; 
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
   background: white;
+  padding: 1rem 2rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -10,10 +14,13 @@
   flex-wrap: wrap;
 }
 
+
 .logo {
   font-size: 1.8rem;
   font-weight: bold;
+  color: #003366;
 }
+
 
 .hamburger {
   display: none;
@@ -23,13 +30,13 @@
   cursor: pointer;
 }
 
+
 .nav-links {
   display: flex;
   align-items: center;
   gap: 1rem;
 }
 
-/* Make nav link buttons look like links */
 .nav-link-btn {
   background: none;
   border: none;
@@ -44,13 +51,13 @@
   text-decoration: underline;
 }
 
-
 .search-bar {
   padding: 0.5rem;
   border-radius: 5px;
   border: 2px solid #003366;
   outline: none;
 }
+
 
 .nav-btn {
   background-color: #0059b3;
@@ -66,12 +73,13 @@
   background-color: #004080;
 }
 
+
 .username {
   margin-right: 10px;
   font-weight: bold;
 }
 
-/* Responsive behavior */
+
 @media (max-width: 768px) {
   .hamburger {
     display: block;

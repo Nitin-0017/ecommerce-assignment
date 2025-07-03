@@ -1,10 +1,10 @@
 .cart-section {
-  max-width: 900px;
-  margin: 2rem auto;
+  min-height: 100vh;
+  margin: 6rem auto 2rem; 
   padding: 1rem 2rem;
   background: #f9f9f9;
   border-radius: 12px;
-  box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
 }
 
 .cart-section h2 {
@@ -26,13 +26,13 @@
   align-items: center;
   background: #fff;
   border-radius: 10px;
-  box-shadow: 0 3px 8px rgba(0,0,0,0.08);
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.08);
   padding: 1rem;
   transition: box-shadow 0.3s ease;
 }
 
 .cart-item:hover {
-  box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
 }
 
 .cart-item img {
@@ -107,8 +107,7 @@
 }
 
 .remove-btn:hover {
-  color: #c0392b;
-  text-decoration: underline;
+  color: white;
 }
 
 hr {
@@ -131,23 +130,24 @@ h3 {
   color: #666;
   margin-top: 3rem;
 }
+
 .buy-now-container {
-display: flex;
-justify-content: center;
-margin-top: 2rem;
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
 }
 
 .buy-now-btn {
-background-color: #1f2937;
-color: white;
-padding: 12px 32px;
-font-size: 1rem;
-border: none;
-border-radius: 8px;
-cursor: pointer;
-transition: background-color 0.3s ease;
+  background-color: #1f2937;
+  color: white;
+  padding: 12px 32px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
 .buy-now-btn:hover {
-background-color: #111827; 
+  background-color: #111827;
 }
