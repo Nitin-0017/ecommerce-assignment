@@ -1,0 +1,117 @@
+.products-container {
+  display: flex;
+  gap: 2rem;
+  padding: 100px 2rem 2rem; 
+  min-height: 100vh;
+  background: #f4f6f8;
+}
+
+
+.sidebar.modern {
+  flex: 0 0 320px; 
+  background: white;
+  padding: 1.5rem;
+  border-radius: 16px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.08);
+  max-height: 60vh;
+  overflow-y: auto;
+  position: sticky;
+  top: 90px;
+}
+
+.sidebar h2 {
+  font-size: 1.5rem;
+  color: #003366;
+  margin-bottom: 1.5rem;
+  border-bottom: 2px solid #003366;
+  padding-bottom: 0.3rem;
+}
+
+
+.filter-group {
+  margin-bottom: 1.5rem; 
+  display: flex;
+  flex-direction: column;
+}
+
+.filter-group label,
+.checkbox-group label,
+.rating-options label {
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  font-size: 0.95rem;
+}
+
+.filter-group select {
+  padding: 0.6rem;
+  font-size: 1rem;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  background: #f9f9f9;
+  cursor: pointer;
+}
+
+
+.checkbox-group label {
+  display: block;
+  margin-bottom: 0.4rem;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+
+.slider-wrapper {
+  margin-top: 1rem;
+}
+
+.price-values {
+  display: flex;
+  justify-content: space-between;
+  font-weight: 500;
+  margin-top: 0.5rem;
+}
+
+
+.rating-options {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.clear-btn {
+  margin-top: 1rem;
+  padding: 0.6rem 1rem;
+  background-color: #003366;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+.clear-btn:hover {
+  background-color: #001f4d;
+}
+
+
+.products-main {
+  flex: 1;
+}
+
+.products-main h1 {
+  color: #003366;
+  margin-bottom: 1.5rem;
+}
+
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 2rem;
+}
+
+
+.loading,
+.error {
+  text-align: center;
+  font-size: 1.2rem;
+  color: #333;
+}
