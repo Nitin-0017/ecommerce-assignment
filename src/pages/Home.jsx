@@ -9,7 +9,8 @@ const Home = ({ addToCart }) => {
   const [products, setProducts] = useState([]);
   const [searchQuery, setSearchQuery] = useState('');
   const [categoryFilter, setCategoryFilter] = useState('');
-  const [priceFilter, setPriceFilter] = useState('');
+  // const [priceFilter, setPriceFilter] = useState('');
+  const priceFilter = ''
 
  
   const [formData, setFormData] = useState({ name: '', email: '', message: '' });

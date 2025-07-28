@@ -9,12 +9,15 @@ const Login = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const registeredUser = JSON.parse(localStorage.getItem('registeredUser'));
-
-    if (registeredUser?.username === email && registeredUser?.password === password) {
+  
+    
+    const validEmail = "Nitin";
+    const validPassword = "1234";
+  
+    if (email === validEmail && password === validPassword) {
       alert('Successfully logged in ✅');
       localStorage.setItem('isLoggedIn', 'true');
-      localStorage.setItem('username', registeredUser.username);
+      localStorage.setItem('username', email);  
       navigate('/home');
     } else {
       alert('Invalid email or password ❌');
@@ -33,7 +36,7 @@ const Login = () => {
       <form className="login-form" onSubmit={handleSubmit}>
         <h2>Login to SwiftKart</h2>
 
-        <label>Email Address</label>
+        <label>Username</label>
         <input
           type="text"
           placeholder="Enter your username"
