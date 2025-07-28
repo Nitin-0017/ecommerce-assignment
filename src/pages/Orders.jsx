@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import BottomNav from '../components/BottomNav';
-import '../styles/orders.css';
+import '../styles/Orders.css';
 import { FaTrashAlt, FaUndoAlt } from 'react-icons/fa'; 
 import ReturnModal from './ReturnModal'; 
 
