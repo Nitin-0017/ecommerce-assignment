@@ -14,7 +14,6 @@ import Orders from './pages/Orders';
 import Wishlist from './pages/Wishlist';
 import Profile from './pages/Profile';
 import Products from './pages/Products';
-
 import Navbar from './components/Navbar';
 
 function App() {
