@@ -3,7 +3,7 @@ import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import BottomNav from '../components/BottomNav';
 import { useNavigate } from 'react-router-dom';
-import "../styles/Cart.css"
+import "../styles/Cart.css";
 
 const Cart = ({ cartItems, handleIncrease, handleDecrease, handleRemove }) => {
   const navigate = useNavigate();
