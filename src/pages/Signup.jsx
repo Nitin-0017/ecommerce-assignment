@@ -31,7 +31,7 @@ const Signup = () => {
     <div className="login-container">
       <div className="login-image">
         <img
-          src="https://i.pinimg.com/736x/10/f2/ec/10f2ec4c254b721976716e60a7708aa9.jpg"
+          src="https://i.pinimg.com/736x/0c/db/05/0cdb0533cd783fd067534e58050c76e7.jpg"
           alt="Signup Visual"
         />
       </div>

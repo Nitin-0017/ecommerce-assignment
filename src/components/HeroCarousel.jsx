@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import '../styles/HeroCarousel.css';
 
 const slides = [
@@ -31,6 +32,7 @@ const slides = [
 const HeroCarousel = () => {
   const [current, setCurrent] = useState(0);
   const length = slides.length;
+  const navigate = useNavigate(); // ✅ navigate hook
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -54,7 +56,12 @@ const HeroCarousel = () => {
               <h1 className="headline">{slide.title}</h1>
               <p className="subtext">{slide.subtitle}</p>
               <div className="buttons">
-                <a href="#" className="btn btn-primary">Shop Now</a>
+                <button
+                  className="btn btn-primary"
+                  onClick={() => navigate('/products')} // ✅ Products page pe le jayega
+                >
+                  Shop Now
+                </button>
               </div>
             </div>
 

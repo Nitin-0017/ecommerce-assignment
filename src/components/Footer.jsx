@@ -8,8 +8,8 @@ const Footer = () => {
         
       
         <div className="footer-section">
-          <h2 className="footer-title">SwiftKart</h2>
-          <p>Your one-stop destination for quality products at affordable prices. Shop with ease, shop with confidence.</p>
+          <h2 className="footer-title" style={{color:"white",fontSize:"25px"}}>SwiftKart</h2>
+          <p style={{color:"white"}}>Your one-stop destination for quality products at affordable prices. Shop with ease, shop with confidence.</p>
         </div>
 
         <div className="footer-section">
@@ -35,16 +35,16 @@ const Footer = () => {
         </div>
 
        
-        <div className="footer-section">
+        <div className="footer-section" >
          
-          <p>📍 123 Commerce Street, Shopping District, SH 10001</p>
-          <p>📞 (123) 456-7890</p>
-          <p>✉️ support@swiftkart.com</p>
+          <p style={{color:"white"}}>📍 123 Commerce Street, Shopping District, SH 10001</p>
+          <p style={{color:"white"}}>📞 (123) 456-7890</p>
+          <p style={{color:"white"}}>✉️ support@swiftkart.com</p>
         </div>
       </div>
 
       <div className="footer-bottom">
-        <p>&copy; 2025 SwiftKart. All rights reserved.</p>
+        <p style={{color:"white"}}>&copy; 2025 SwiftKart. All rights reserved.</p>
       </div>
     </footer>
   );

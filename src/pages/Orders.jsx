@@ -2,9 +2,9 @@ import React, { useEffect, useState } from 'react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import BottomNav from '../components/BottomNav';
-// import '../styles/Orders.css';
-import { FaTrashAlt, FaUndoAlt } from 'react-icons/fa'; 
-import ReturnModal from './ReturnModal'; 
+import ReturnModal from './ReturnModal';
+import EmptyState from "../components/EmptyState";
+import '../styles/Orders.css';
 
 const Orders = () => {
   const [orders, setOrders] = useState([]);
@@ -37,7 +37,7 @@ const Orders = () => {
         <h2 className="orders-heading"> My Orders</h2>
 
         {orders.length === 0 ? (
-          <p className="no-orders">You have no recent orders.</p>
+          <EmptyState type="orders" />
         ) : (
           <div className="orders-list">
             {orders.map((order, index) => (
@@ -54,16 +54,18 @@ const Orders = () => {
                 </div>
 
                 <div className="order-actions">
-                  <FaUndoAlt
-                    title="Return"
-                    className="order-icon return"
+                  <button
+                    className="btn btn-return"
                     onClick={() => openReturnModal(order.id)}
-                  />
-                  <FaTrashAlt
-                    title="Cancel"
-                    className="order-icon cancel"
+                  >
+                    Return
+                  </button>
+                  <button
+                    className="btn btn-cancel"
                     onClick={() => handleCancel(order.id)}
-                  />
+                  >
+                    Cancel
+                  </button>
                 </div>
               </div>
             ))}
@@ -74,7 +76,6 @@ const Orders = () => {
       <BottomNav />
       <Footer />
 
-     
       {showReturnModal && (
         <ReturnModal
           onClose={() => setShowReturnModal(false)}

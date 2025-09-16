@@ -4,6 +4,7 @@ import Footer from '../components/Footer';
 import BottomNav from '../components/BottomNav';
 import '../styles/Wishlist.css';
 import { toast } from 'react-toastify';
+import EmptyState from "../components/EmptyState";
 
 const Wishlist = ({ wishlistItems, toggleWishlist, setCartItems }) => {
 
@@ -34,7 +35,7 @@ const Wishlist = ({ wishlistItems, toggleWishlist, setCartItems }) => {
       <div className="wishlist-page">
         <h2>My Wishlist</h2>
         {wishlistItems.length === 0 ? (
-          <p className="empty-msg">Your wishlist is empty.</p>
+         <EmptyState type="wishlist" />
         ) : (
           <div className="wishlist-grid">
             {wishlistItems.map(item => (

@@ -36,7 +36,7 @@ const Login = () => {
     <div className="login-container">
       <div className="login-image">
         <img
-          src="https://i.pinimg.com/736x/10/f2/ec/10f2ec4c254b721976716e60a7708aa9.jpg"
+          src="https://i.pinimg.com/736x/69/3b/84/693b84248ef6402be1159130dc52a684.jpg"
           alt="Login Visual"
         />
       </div>
@@ -44,7 +44,7 @@ const Login = () => {
       <form className="login-form" onSubmit={handleSubmit}>
         <h2>Login to SwiftKart</h2>
 
-        <label>Username</label>
+        <label style={{fontSize:"1.2rem"}}>Username</label>
         <input
           type="text"
           placeholder="Enter your username"
@@ -53,7 +53,7 @@ const Login = () => {
           required
         />
 
-        <label>Password</label>
+        <label style={{fontSize:"1.2rem"}}>Password</label>
         <input
           type="password"
           placeholder="Enter your password"
@@ -62,14 +62,7 @@ const Login = () => {
           required
         />
 
-        <div className="options">
-          <label className="remember-me">
-            <input type="checkbox" />
-            Remember Me
-          </label>
-          <a href="#" className="forgot-password">Forgot Password?</a>
-        </div>
-
+        
         <button type="submit" className="login-btn">Login</button>
       </form>
     </div>

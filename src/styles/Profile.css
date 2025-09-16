@@ -28,7 +28,7 @@
   height: 120px;
   border-radius: 50%;
   object-fit: cover;
-  border: 2px solid #003366;
+  border: 2px solid #3b8d99;
   transition: transform 0.2s ease-in-out;
 }
 
@@ -40,7 +40,7 @@
   position: absolute;
   bottom: 0;
   right: 0;
-  background: #003366;
+  background: #3b8d99;
   color: #fff;
   border-radius: 50%;
   padding: 6px;

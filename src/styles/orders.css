@@ -98,3 +98,37 @@
 .order-icon.cancel {
   color: red;
 }
+.order-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.btn {
+  padding: 8px 14px;
+  border-radius: 6px;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+/* Return Button */
+.btn-return {
+  background-color: #ffc107; /* amber */
+  color: #fff;
+}
+
+.btn-return:hover {
+  background-color: #e0a800;
+}
+
+/* Cancel Button */
+.btn-cancel {
+  background-color: #dc3545; /* red */
+  color: #fff;
+}
+
+.btn-cancel:hover {
+  background-color: #c82333;
+}

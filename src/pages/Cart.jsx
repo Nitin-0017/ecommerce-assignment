@@ -5,6 +5,7 @@ import BottomNav from '../components/BottomNav';
 import { useNavigate } from 'react-router-dom';
 import "../styles/Cart.css";
 import { toast } from 'react-toastify';
+import EmptyState from "../components/EmptyState";
 
 const Cart = ({ cartItems, handleIncrease, handleDecrease, handleRemove }) => {
   const navigate = useNavigate();
@@ -30,7 +31,7 @@ const Cart = ({ cartItems, handleIncrease, handleDecrease, handleRemove }) => {
         <h2>Your Shopping Cart</h2>
 
         {cartItems.length === 0 ? (
-          <p>Your cart is empty.</p>
+          <EmptyState type="cart" />
         ) : (
           <div className="cart-items">
             {cartItems.map((item) => (

@@ -19,6 +19,10 @@
     color: #fff;
 }
 
+.hero::before {
+  pointer-events: none; /* ✅ overlay clicks block nahi karega */
+}
+
 
 
 .hero-carousel {
@@ -68,7 +72,7 @@
 
 .carousel-text .tagline {
   font-size: 1.2rem;
-  color: #007bff;
+  color: #0053ac;
   font-style: italic;
   margin-bottom: 10px;
 }
@@ -98,13 +102,13 @@
 }
 
 .btn-primary {
-  background: #007bff;
+  background: #003366;
   color: #fff;
 }
 
 .btn-outline {
-  border: 2px solid #007bff;
-  color: #007bff;
+  border: 2px solid #003366;
+  color: #003366;
   background: transparent;
 }
 
@@ -144,7 +148,7 @@
 }
 
 .carousel-dots span.active {
-  background: #007bff;
+  background: #003366;
 }
 
 /* ✅ Responsive */

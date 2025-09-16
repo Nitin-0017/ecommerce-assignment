@@ -103,7 +103,7 @@ const Home = ({ addToCart }) => {
 
       {/* Best Sellers Section */}
       <section className="section" ref={productsRef}>
-        <h2>Best Sellers</h2>
+        <h2 style={{color:"#003366",fontSize:"30px"}}>Best Sellers</h2>
         <div className="products">
           {products.slice(0, 5).map((product) => (
             <ProductCard key={product.id} product={product} addToCart={addToCart} />
@@ -159,7 +159,7 @@ const Home = ({ addToCart }) => {
 
       {/* About / Testimonials Section */}
       <section className="section" ref={aboutRef}>
-        <h2 className="testimonial-heading">What Our Customers Say</h2>
+        <h2 className="testimonial-heading" style={{color:"#003366"}}>What Our Customers Say</h2>
         <div className="testimonial-wrapper">
           <div className="testimonial-cards">
             {/* Example testimonial cards */}
