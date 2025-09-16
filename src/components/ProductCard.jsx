@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import '../styles/Home.css';
 import { FaHeart, FaRegHeart, FaStar, FaStarHalfAlt, FaRegStar } from 'react-icons/fa';
+import { toast } from 'react-toastify';
 
 const ProductCard = ({ product, addToCart }) => {
   const [isWishlisted, setIsWishlisted] = useState(false);
@@ -16,15 +17,16 @@ const ProductCard = ({ product, addToCart }) => {
     let updatedList;
     if (isWishlisted) {
       updatedList = wishlist.filter(item => item.id !== product.id);
+      toast.info(`${product.title} removed from wishlist`);
     } else {
       updatedList = [...wishlist, product];
+      toast.success(`${product.title} added to wishlist`);
     }
 
     localStorage.setItem("wishlist", JSON.stringify(updatedList));
     setIsWishlisted(!isWishlisted);
   };
 
-  
   const renderStars = (rating) => {
     const stars = [];
     const fullStars = Math.floor(rating);
@@ -53,9 +55,8 @@ const ProductCard = ({ product, addToCart }) => {
 
       <img src={product.image} alt={product.title} />
       <h4>{product.title}</h4>
-      <p>₹{Math.round(product.price * 83)}</p> 
+      <p>₹{Math.round(product.price * 83)}</p>
 
-     
       <div className="rating">
         {renderStars(product.rating?.rate || 0)}{' '}
         <span className="rating-count">({product.rating?.count || 0})</span>

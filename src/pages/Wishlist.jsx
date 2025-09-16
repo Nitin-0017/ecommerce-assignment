@@ -1,34 +1,20 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import BottomNav from '../components/BottomNav';
 import '../styles/Wishlist.css';
+import { toast } from 'react-toastify';
 
-const Wishlist = ({ setCartItems }) => {
-  const [wishlist, setWishlist] = useState([]);
-
-  useEffect(() => {
-    const storedWishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
-    setWishlist(storedWishlist);
-  }, []);
-
-  const removeFromWishlist = (id) => {
-    const updated = wishlist.filter(item => item.id !== id);
-    setWishlist(updated);
-    localStorage.setItem("wishlist", JSON.stringify(updated));
-  };
+const Wishlist = ({ wishlistItems, toggleWishlist, setCartItems }) => {
 
   const moveToCart = (product) => {
     const currentCart = JSON.parse(localStorage.getItem("cartItems")) || [];
-
     const exist = currentCart.find(item => item.id === product.id);
     let updatedCart;
 
     if (exist) {
       updatedCart = currentCart.map(item =>
-        item.id === product.id
-          ? { ...item, quantity: item.quantity + 1 }
-          : item
+        item.id === product.id ? { ...item, quantity: item.quantity + 1 } : item
       );
     } else {
       updatedCart = [...currentCart, { ...product, quantity: 1 }];
@@ -36,7 +22,9 @@ const Wishlist = ({ setCartItems }) => {
 
     localStorage.setItem("cartItems", JSON.stringify(updatedCart));
     setCartItems(updatedCart);
-    removeFromWishlist(product.id);
+
+    toggleWishlist(product); // remove from wishlist
+    toast.success(`${product.title} moved to cart 🛒`);
   };
 
   return (
@@ -45,26 +33,19 @@ const Wishlist = ({ setCartItems }) => {
 
       <div className="wishlist-page">
         <h2>My Wishlist</h2>
-
-        {wishlist.length === 0 ? (
+        {wishlistItems.length === 0 ? (
           <p className="empty-msg">Your wishlist is empty.</p>
         ) : (
           <div className="wishlist-grid">
-            {wishlist.map((item) => (
+            {wishlistItems.map(item => (
               <div key={item.id} className="wishlist-card">
                 <img src={item.image} alt={item.title} className="wishlist-img" />
-
                 <div className="wishlist-info">
                   <h4>{item.title}</h4>
-                  <p>₹{item.price}</p>
-
+                  <p>₹{Math.round(item.price * 83)}</p>
                   <div className="wishlist-btn-group">
-                    <button className="move-btn" onClick={() => moveToCart(item)}>
-                      Move to Cart
-                    </button>
-                    <button className="remove-btn" onClick={() => removeFromWishlist(item.id)}>
-                      Remove
-                    </button>
+                    <button className="move-btn" onClick={() => moveToCart(item)}>Move to Cart</button>
+                    <button className="remove-btn" onClick={() => toggleWishlist(item)}>Remove</button>
                   </div>
                 </div>
               </div>
@@ -73,7 +54,10 @@ const Wishlist = ({ setCartItems }) => {
         )}
       </div>
 
-      <BottomNav />
+      <BottomNav 
+        cartItems={JSON.parse(localStorage.getItem("cartItems")) || []} 
+        wishlistItems={wishlistItems} 
+      />
       <Footer />
     </>
   );

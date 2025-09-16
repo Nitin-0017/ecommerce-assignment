@@ -18,6 +18,7 @@
 .footer-title {
   font-size: 1.2rem;
   margin-bottom: 1rem;
+  font-weight: 600;
 }
 
 .footer ul {
@@ -27,6 +28,38 @@
 
 .footer li {
   margin-bottom: 0.5rem;
+  transition: color 0.3s ease;
+}
+
+.footer li:hover {
+  color: #00aced; /* light blue hover effect */
+  cursor: pointer;
+}
+
+/* Social Icons */
+.footer-social {
+  display: flex;
+  gap: 1rem;
+  margin-top: 0.5rem;
+}
+
+.footer-social a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background-color: #003366;
+  color: white;
+  text-decoration: none;
+  font-size: 1.1rem;
+  transition: all 0.3s ease;
+}
+
+.footer-social a:hover {
+  background-color: #00aced;
+  transform: scale(1.1);
 }
 
 .footer-bottom {
@@ -34,4 +67,16 @@
   margin-top: 2rem;
   border-top: 1px solid #444;
   padding-top: 1rem;
+  font-size: 0.9rem;
+  color: #ccc;
+}
+.footer-section {
+  flex: 1 1 200px;
+  padding-right: 1rem;
+  border-right: 1px solid #444; 
+}
+
+
+.footer-section:last-child {
+  border-right: none;
 }

@@ -1,16 +1,18 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import BottomNav from '../components/BottomNav';
+import Modal from '../components/Modal';
 
 const PaymentStatus = () => {
   const { state } = useLocation();
   const navigate = useNavigate();
+  const [showModal, setShowModal] = useState(true);
 
   useEffect(() => {
     if (state?.success) {
-      localStorage.removeItem("cartItems"); 
+      localStorage.removeItem("cartItems");
     }
   }, [state]);
 
@@ -21,33 +23,30 @@ const PaymentStatus = () => {
   return (
     <>
       <Navbar />
-      <div className="payment-status-page">
-        <h2>{success ? "✅ Payment Successful!" : "❌ Payment Failed"}</h2>
-
-        {success && (
-          <>
-            <h3>Order Summary</h3>
-            <p><strong>Name:</strong> {name}</p>
-            <p><strong>Address:</strong> {address}</p>
-            <p><strong>Phone:</strong> {phone}</p>
-            <p><strong>Payment Mode:</strong> {paymentMethod.toUpperCase()}</p>
-            {razorpay_payment_id && <p><strong>Payment ID:</strong> {razorpay_payment_id}</p>}
-            <p><strong>Total Paid:</strong> ₹{totalAmount.toLocaleString()}</p>
-
-            <div style={{ marginTop: '1.5rem' }}>
-              {cartItems?.map((item) => (
-                <div key={item.id} style={{ marginBottom: '0.75rem' }}>
-                  <p>{item.title} × {item.quantity} = ₹{(item.price * item.quantity).toLocaleString()}</p>
-                </div>
-              ))}
-            </div>
-          </>
-        )}
-
-        <button onClick={() => navigate('/home')} className='check-btn'>Back to Home</button>
-      </div>
+      {showModal && (
+        <Modal title={success ? "Payment Successful!" : " Payment Failed"} onClose={() => setShowModal(false)}>
+          {success && (
+            <>
+              <p><strong>Name:</strong> {name}</p>
+              <p><strong>Address:</strong> {address}</p>
+              <p><strong>Phone:</strong> {phone}</p>
+              <p><strong>Payment Mode:</strong> {paymentMethod.toUpperCase()}</p>
+              {razorpay_payment_id && <p><strong>Payment ID:</strong> {razorpay_payment_id}</p>}
+              <p><strong>Total Paid:</strong> ₹{totalAmount.toLocaleString()}</p>
+              <div style={{ marginTop: '1rem' }}>
+                {cartItems?.map((item) => (
+                  <div key={item.id}>
+                    <p>{item.title} × {item.quantity} = ₹{(item.price * item.quantity).toLocaleString()}</p>
+                  </div>
+                ))}
+              </div>
+            </>
+          )}
+          <button className='check-btn' onClick={() => { setShowModal(false); navigate('/home'); }}>Back to Home</button>
+        </Modal>
+      )}
       <BottomNav/>
-      <Footer />
+      <Footer/>
     </>
   );
 };

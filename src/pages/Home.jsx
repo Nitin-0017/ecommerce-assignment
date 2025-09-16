@@ -1,9 +1,17 @@
 import React, { useEffect, useState, useRef } from 'react';
+import HeroCarousel from '../components/HeroCarousel';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import ProductCard from '../components/ProductCard';
 import BottomNav from '../components/BottomNav';
 import '../styles/Home.css';
+
+const heroSlides = [
+  { id: 1, image: '/images/banner1.jpg', title: 'Big Sale' },
+  { id: 2, image: '/images/banner2.jpg', title: 'New Arrivals' },
+  { id: 3, image: '/images/banner3.jpg', title: 'Top Deals' },
+  { id: 4, image: '/images/banner4.jpg', title: 'Best Sellers' },
+];
 
 const Home = ({ addToCart }) => {
   const [products, setProducts] = useState([]);
@@ -14,7 +22,7 @@ const Home = ({ addToCart }) => {
 
  
   const [formData, setFormData] = useState({ name: '', email: '', message: '' });
-  const [formSubmitted, setFormSubmitted] = useState(false);
+ 
 
  
   const productsRef = useRef(null);
@@ -67,10 +75,12 @@ const Home = ({ addToCart }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setFormSubmitted(true);
+    // Form data clear kar do
     setFormData({ name: '', email: '', message: '' });
-    setTimeout(() => setFormSubmitted(false), 3000);
+    // Alert dikhao
+    alert('Your message has been sent successfully!');
   };
+  
 
   return (
     <>
@@ -81,10 +91,7 @@ const Home = ({ addToCart }) => {
       />
 
       <section className="hero">
-        <div className="hero-content">
-          <h1>Shop the Latest Trends</h1>
-          <p>Discover amazing products at unbeatable prices</p>
-        </div>
+      <HeroCarousel slides={heroSlides} />
       </section>
 
       <section className="section" ref={productsRef}>
@@ -95,14 +102,15 @@ const Home = ({ addToCart }) => {
           ))}
         </div>
 
-        <section className="hero-1">
-          <div className="hero-content">
-            <div className="hero-text">
-              <h1>Discover your Choice</h1>
-              <p>Shop now</p>
-            </div>
-          </div>
-        </section>
+        <div className="hero-1">
+  <div className="calligraphy-text">
+    <svg viewBox="0 0 1200 400" preserveAspectRatio="xMidYMid meet">
+      <text x="50%" y="50%" textAnchor="middle" dominantBaseline="middle">
+        Discover Elegance
+      </text>
+    </svg>
+  </div>
+</div>
 
 
         <div className="product-filters" ref={productRef}>
@@ -152,37 +160,74 @@ const Home = ({ addToCart }) => {
       </section>
 
       <section className="section" ref={aboutRef}>
-        <h2 className="testimonial-heading">What Our Customers Say</h2>
-        <div className="testimonial-cards">
-         <div className="testimonial-card">
-            <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Sarah" />
-            <h3>Sarah Johnson</h3>
-            <p className="role">Verified Customer</p>
-            <p className="quote">
-              "I've been shopping here for years. The quality of products and customer service is unmatched. My recent order arrived earlier than expected!"
-            </p>
-            <div className="stars">★★★★★</div>
-          </div>
-          <div className="testimonial-card">
-            <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Michael" />
-            <h3>Michael Chen</h3>
-            <p className="role">Verified Customer</p>
-            <p className="quote">
-              "The checkout process was seamless, and the products exceeded my expectations. Will definitely be a returning customer!"
-            </p>
-            <div className="stars">★★★★★</div>
-          </div>
-          <div className="testimonial-card">
-            <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="Emily" />
-            <h3>Emily Rodriguez</h3>
-            <p className="role">Verified Customer</p>
-            <p className="quote">
-              "I love the variety of products available here. Found exactly what I was looking for and at a competitive price. Highly recommend!"
-            </p>
-            <div className="stars">★★★★★</div>
-          </div>
-        </div>
-      </section>
+  <h2 className="testimonial-heading">What Our Customers Say</h2>
+  <div className="testimonial-wrapper">
+    <div className="testimonial-cards">
+      {/* Original 3 Cards */}
+      <div className="testimonial-card">
+        <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Sarah" />
+        <h3>Sarah Johnson</h3>
+        <p className="role">Verified Customer</p>
+        <p className="quote">
+          "I've been shopping here for years. The quality of products and customer service is unmatched. My recent order arrived earlier than expected!"
+        </p>
+        <div className="stars">★★★★★</div>
+      </div>
+
+      <div className="testimonial-card">
+        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Michael" />
+        <h3>Michael Chen</h3>
+        <p className="role">Verified Customer</p>
+        <p className="quote">
+          "The checkout process was seamless, and the products exceeded my expectations. Will definitely be a returning customer!"
+        </p>
+        <div className="stars">★★★★★</div>
+      </div>
+
+      <div className="testimonial-card">
+        <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="Emily" />
+        <h3>Emily Rodriguez</h3>
+        <p className="role">Verified Customer</p>
+        <p className="quote">
+          "I love the variety of products available here. Found exactly what I was looking for and at a competitive price. Highly recommend!"
+        </p>
+        <div className="stars">★★★★★</div>
+      </div>
+
+      {/* Duplicate 3 Cards for seamless scroll */}
+      <div className="testimonial-card">
+        <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Sarah" />
+        <h3>Sarah Johnson</h3>
+        <p className="role">Verified Customer</p>
+        <p className="quote">
+          "I've been shopping here for years. The quality of products and customer service is unmatched. My recent order arrived earlier than expected!"
+        </p>
+        <div className="stars">★★★★★</div>
+      </div>
+
+      <div className="testimonial-card">
+        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Michael" />
+        <h3>Michael Chen</h3>
+        <p className="role">Verified Customer</p>
+        <p className="quote">
+          "The checkout process was seamless, and the products exceeded my expectations. Will definitely be a returning customer!"
+        </p>
+        <div className="stars">★★★★★</div>
+      </div>
+
+      <div className="testimonial-card">
+        <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="Emily" />
+        <h3>Emily Rodriguez</h3>
+        <p className="role">Verified Customer</p>
+        <p className="quote">
+          "I love the variety of products available here. Found exactly what I was looking for and at a competitive price. Highly recommend!"
+        </p>
+        <div className="stars">★★★★★</div>
+      </div>
+    </div>
+  </div>
+</section>
+
 
       <section className="section" ref={contactRef}>
         <div className="contact-section">
@@ -200,11 +245,6 @@ const Home = ({ addToCart }) => {
 
               <button type="submit">Send</button>
 
-              {formSubmitted && (
-                <p style={{ color: 'green', marginTop: '1rem', fontWeight: 'bold' }}>
-                  ✅ Your message has been sent successfully!
-                </p>
-              )}
             </form>
           </div>
         </div>

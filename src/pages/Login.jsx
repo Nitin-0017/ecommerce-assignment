@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { setToken, getToken } from '../utils/auth'; // keep both imports
 import '../styles/Login.css';
 
 const Login = () => {
@@ -7,20 +8,27 @@ const Login = () => {
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
 
+  // Redirect if already logged in
+  useEffect(() => {
+    if (getToken()) {
+      navigate('/home');
+    }
+  }, [navigate]);
+
   const handleSubmit = (e) => {
     e.preventDefault();
-  
-    
+
     const validEmail = "Nitin";
     const validPassword = "1234";
-  
+
     if (email === validEmail && password === validPassword) {
-      alert('Successfully logged in ✅');
-      localStorage.setItem('isLoggedIn', 'true');
-      localStorage.setItem('username', email);  
+      // Save token in localStorage
+      setToken('your_jwt_token_here'); // You can generate a real JWT later
+      localStorage.setItem('username', email);
+      alert('Successfully logged in');
       navigate('/home');
     } else {
-      alert('Invalid email or password ❌');
+      alert('Invalid email or password');
     }
   };
 

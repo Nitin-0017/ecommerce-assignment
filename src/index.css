@@ -181,3 +181,9 @@ body {
     padding: 1rem;
   }
 }
+
+/* Success toast background change */
+.Toastify__toast--success {
+  background: #386639 !important; /* यहाँ अपना custom color डालो */
+  color: white !important;         /* text color */
+}

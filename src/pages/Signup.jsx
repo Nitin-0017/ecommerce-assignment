@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { setToken } from '../utils/auth';
 import '../styles/Login.css';
 
 const Signup = () => {
@@ -7,22 +8,23 @@ const Signup = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
-  const [success, setSuccess] = useState('');
 
   const handleSignup = () => {
     if (!username || !password) {
       setError('Please fill all fields');
-      setSuccess('');
-    } else {
-      localStorage.setItem('registeredUser', JSON.stringify({ username, password }));
-      localStorage.setItem('isLoggedIn', 'true');
-      localStorage.setItem('username', username);
-      setError('');
-      setSuccess('Signup successful! Redirecting to home...');
-      setTimeout(() => {
-        navigate('/home');
-      }, 1000);
+      return;
     }
+
+    // Save user credentials (mock backend)
+    const user = { username, password };
+    localStorage.setItem('registeredUser', JSON.stringify(user));
+
+    // Generate a fake JWT token
+    const fakeToken = btoa(`${username}:${password}`); // base64 string as token
+    setToken(fakeToken);
+    localStorage.setItem('username', username);
+
+    navigate('/home');
   };
 
   return (
@@ -42,7 +44,6 @@ const Signup = () => {
           placeholder="Create Username"
           value={username}
           onChange={(e) => setUsername(e.target.value)}
-          className="login-input"
         />
 
         <label>Create Password</label>
@@ -51,12 +52,13 @@ const Signup = () => {
           placeholder="Create Password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
-          className="login-input"
         />
 
         {error && <p className="error-msg">{error}</p>}
-        {success && <p style={{ color: 'green' }}>{success}</p>}
-        <button className="login-btn" onClick={handleSignup}>Sign Up</button>
+
+        <button className="login-btn" onClick={handleSignup}>
+          Sign Up
+        </button>
       </form>
     </div>
   );

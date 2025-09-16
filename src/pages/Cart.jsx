@@ -4,12 +4,14 @@ import Footer from '../components/Footer';
 import BottomNav from '../components/BottomNav';
 import { useNavigate } from 'react-router-dom';
 import "../styles/Cart.css";
+import { toast } from 'react-toastify';
 
 const Cart = ({ cartItems, handleIncrease, handleDecrease, handleRemove }) => {
   const navigate = useNavigate();
 
   const handleBuyNow = () => {
     navigate('/checkout', { state: { cartItems } });
+    toast.success("Proceeding to checkout ");
   };
 
   const getTotal = () => {
@@ -18,6 +20,8 @@ const Cart = ({ cartItems, handleIncrease, handleDecrease, handleRemove }) => {
       0
     );
   };
+
+  
 
   return (
     <>
@@ -44,11 +48,12 @@ const Cart = ({ cartItems, handleIncrease, handleDecrease, handleRemove }) => {
                   </div>
 
                   <button
-                    className="remove-btn"
-                    onClick={() => handleRemove(item.id)}
-                  >
-                    Remove
+                      className="remove-btn"
+                      onClick={() => handleRemove(item.id)} 
+                    >
+                      Remove
                   </button>
+
                 </div>
               </div>
             ))}
@@ -82,7 +87,8 @@ const Cart = ({ cartItems, handleIncrease, handleDecrease, handleRemove }) => {
           </div>
         )}
       </section>
-        <BottomNav/>
+
+      <BottomNav/>
       <Footer />
     </>
   );

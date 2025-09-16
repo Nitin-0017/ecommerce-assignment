@@ -1,103 +1,63 @@
-.profile-page {
-  padding: 6rem 2rem 2rem 2rem; 
-  background: #f4f6f8;
-  min-height: 100vh;
-  text-align: center;
-}
-
-.profile-page h2{
-    text-align: center;
-  font-size: 2rem;
-  margin-bottom: 1.5rem;
-  font-weight: 700;
-  color: #333;
-}
-.profile-form {
+.profile-container {
   max-width: 400px;
+  margin: 20px auto;
+  padding: 20px;
+  text-align: center;
+  font-family: 'Arial', sans-serif;
+}
+
+.profile-pic-wrapper {
+  position: relative;
+  width: 120px;
+  height: 120px;
   margin: auto;
-  background: white;
-  padding: 2rem;
-  border-radius: 10px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-}
-
-.profile-form input,
-.profile-form textarea {
-  width: 100%;
-  margin: 0.5rem 0;
-  padding: 10px;
-  border-radius: 6px;
-  border: 1px solid #ccc;
-  font-size: 1rem;
-}
-
-.profile-form textarea {
-  resize: vertical;
-}
-
-.profile-pic-section {
-  margin-bottom: 1rem;
 }
 
 .profile-pic {
   width: 120px;
   height: 120px;
-  object-fit: cover;
   border-radius: 50%;
-  border: 3px solid #003366;
-  margin-bottom: 0.5rem;
-}
-
-.save-btn, .logout-btn {
-  width: 100%;
-  margin-top: 0.8rem;
-  padding: 10px;
-  font-size: 1rem;
-  font-weight: bold;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-}
-
-.save-btn {
-  background-color: #003366;
-  color: white;
-}
-
-.save-btn:hover {
-  background-color: #0050aa;
-}
-
-.logout-btn {
-  background-color: #e53935;
-  color: white;
-}
-
-.logout-btn:hover {
-  background-color: #c62828;
-}
-
-.profile-pic-wrapper {
-  position: relative;
-  display: inline-block;
+  object-fit: cover;
+  border: 2px solid #3b8d99;
 }
 
 .edit-icon-btn {
   position: absolute;
   bottom: 0;
   right: 0;
-  background-color: white;
-  border: 2px solid #003366;
+  background: #3b8d99;
+  color: #fff;
   border-radius: 50%;
-  padding: 6px;
+  padding: 5px;
   cursor: pointer;
-  transition: background-color 0.2s;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
-.edit-icon-btn:hover {
-  background-color: #003366;
-  color: white;
+.profile-options div {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #e6f0f1;
+  margin: 10px 0;
+  padding: 10px 15px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.signout-btn, .save-btn, .back-btn {
+  margin-top: 20px;
+  padding: 10px 20px;
+  background: #3b8d99;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+input, select {
+  display: block;
+  width: 90%;
+  margin: 10px auto;
+  padding: 8px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
 }

@@ -10,36 +10,63 @@ body {
 }
 
 
-.hero,
-.hero-1 {
-  margin-top: 90px;
-}
-
 .section {
   padding: 3rem 1rem;
   text-align: center;
 }
 
-.hero {
-  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-              url("https://i.pinimg.com/736x/19/df/fd/19dffd9522e9cffb1146d743ed41ca5c.jpg");
-  height: 30rem;
-  padding: 3rem 1rem;
-  color: white;
-  text-align: center;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-size: cover;
-  background-position: center;
+.carousel {
+  position: relative;
+  width: 100%;
+  height: 30rem; /* same height as old hero */
+  overflow: hidden;
+  margin-top: 90px; /* keep same spacing from top */
 }
 
-.hero-content {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 1.5rem;
+.slide {
+  opacity: 0;
+  transition: opacity 0.8s ease-in-out;
+  position: absolute;
+  width: 100%;
+  height: 100%;
 }
+
+.slide.active {
+  opacity: 1;
+  position: relative;
+}
+
+.carousel-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.dots {
+  position: absolute;
+  bottom: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  justify-content: center;
+}
+
+.dot {
+  height: 12px;
+  width: 12px;
+  margin: 0 5px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.dot.active {
+  background-color: #717171;
+}
+
+
 
 .hero-text h1 {
   font-size: 2.5rem;
@@ -150,20 +177,26 @@ body {
   font-weight: 700;
 }
 
+.testimonial-wrapper {
+  overflow: hidden; /* bahar ka content hide */
+  width: 100%;
+}
+
 .testimonial-cards {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
   gap: 2rem;
-  padding: 0 1rem;
+  padding: 1rem;
+  width: max-content;
+  animation: scroll-left 25s linear infinite;
 }
 
 .testimonial-card {
+  flex: 0 0 auto;
+  width: 300px;
   background-color: #fff;
   border-radius: 12px;
   box-shadow: 0 4px 10px rgba(0,0,0,0.1);
   padding: 1.5rem;
-  max-width: 300px;
   text-align: left;
   transition: transform 0.3s ease;
 }
@@ -200,6 +233,20 @@ body {
   color: #ffc107;
   font-size: 1.2rem;
 }
+
+
+
+/* Continuous auto-scroll */
+@keyframes scroll-left {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%); /* half track scroll */
+  }
+}
+
+
 
 .contact-container {
   max-width: 600px;
@@ -284,18 +331,48 @@ body {
 }
 
 .hero-1 {
+  position: relative;
+  height: 30rem;
+  margin-top: 4rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
               url("https://i.pinimg.com/736x/be/a9/3b/bea93bd147ec4f81f9569710d7806524.jpg");
-  height: 30rem;
-  padding: 3rem 1rem;
-  color: white;
-  text-align: center;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   background-size: cover;
   background-position: center;
+  color: white;
+  text-align: center;
 }
+
+.calligraphy-text svg {
+  width: 100%;
+  max-width: 800px;
+  height: auto;
+}
+
+.calligraphy-text text {
+  font-family: 'Great Vibes', cursive;
+  font-size: 15vw;   /* responsive aur bada font */
+  fill: none;
+  stroke: white;
+  stroke-width: 3px;
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
+  animation: handwriting 8s linear infinite;  /* थोड़ा slow aur continuous */
+}
+
+
+@keyframes handwriting {
+  0% {
+    stroke-dashoffset: 1000;
+  }
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+
 
 .category-box img {
   width: 100%;

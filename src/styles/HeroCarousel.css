@@ -1,0 +1,65 @@
+.hero-carousel {
+    position: relative;
+    width: 100%;
+    height: 500px;   /* desktop ke liye height */
+    overflow: hidden;
+    background: white; /* black ya dark bg rakho takki gaps clean lage */
+  }
+  
+  .carousel-slide {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-repeat: no-repeat;
+    background-size: contain;   /* ✅ maintain aspect ratio */
+    background-position: center center; /* center me align hoga */
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+  }
+  
+  /* active slide visible */
+  .carousel-slide.active {
+    opacity: 1;
+  }
+  
+  /* overlay dark effect */
+  .carousel-slide::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.25); /* halka dark filter */
+  }
+  
+  /* dots navigation */
+  .carousel-dots {
+    position: absolute;
+    bottom: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 10px;
+  }
+  
+  .carousel-dots span {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #bbb;
+    cursor: pointer;
+    transition: background 0.3s;
+  }
+  
+  .carousel-dots span.active {
+    background: #fff;
+  }
+  
+  /* ✅ Mobile view */
+  @media (max-width: 768px) {
+    .hero-carousel {
+      height: 280px; /* mobile ke liye kam height */
+    }
+  }
+  
