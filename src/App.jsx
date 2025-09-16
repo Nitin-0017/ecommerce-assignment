@@ -128,6 +128,7 @@ function App() {
                 <Route path="/wishlist" element={<Wishlist wishlistItems={wishlistItems} toggleWishlist={toggleWishlist} setCartItems={setCartItems} />} />
                 <Route path="/profile" element={<Profile />} />
                 <Route path="/" element={<Home addToCart={addToCart} toggleWishlist={toggleWishlist} wishlistItems={wishlistItems} />} />
+                <Route path="*" element={<Navigate to="/" replace />} />
               </Routes>
 
               <BottomNav cartItems={cartItems} wishlistItems={wishlistItems} />
