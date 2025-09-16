@@ -5,7 +5,7 @@ import Footer from '../components/Footer';
 import BottomNav from '../components/BottomNav';
 import Modal from '../components/Modal';
 import Stepper from '../components/Stepper';
-import '../styles/Checkout.css';
+
 
 
 const Checkout = () => {

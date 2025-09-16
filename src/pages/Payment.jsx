@@ -4,7 +4,7 @@ import Footer from '../components/Footer';
 import Navbar from '../components/Navbar';
 import BottomNav from '../components/BottomNav';
 import Stepper from '../components/Stepper';
-import '../styles/Checkout.css';
+
 
 const Payment = () => {
   const { state } = useLocation();
