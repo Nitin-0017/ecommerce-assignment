@@ -1,134 +1,40 @@
-/* src/index.css */
-body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background-color: #f7f7f7;
-  }
-  
-  .orders-page {
-    padding: 6rem 2rem 2rem 2rem;
-    background-color: #f9f9f9;
-    min-height: 100vh;
-  }
-  
-  
-  .orders-heading {
-     text-align: center;
-    font-size: 2rem;
-    margin-bottom: 1.5rem;
-    font-weight: 700;
-    color: #333;
-  }
-  
-  .no-orders {
-    text-align: center;
-    font-size: 1.2rem;
-    color: gray;
-  }
-  
-  .orders-list {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 1.5rem;
-  }
-  
-  .order-card {
-    display: flex;
-    align-items: center;
-    background: white;
-    border-radius: 12px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.07);
-    padding: 1rem;
-    gap: 1rem;
-    width:60%;
-  }
-  
-  .order-image {
-    width: 100px;
-    height: 100px;
-    border-radius: 10px;
-    object-fit: cover;
-  }
-  
-  .order-info {
-    flex: 2;
-  }
-  
-  .order-title {
-    margin: 0;
-    font-size: 1rem;
-    font-weight: 600;
-    color: #003366;
-  }
-  
-  .order-info p {
-    margin: 4px 0;
-    font-size: 0.85rem;
-    color: #333;
-  }
-  
-  .order-date {
-    font-size: 0.75rem;
-    color: #777;
-  }
-  
-  .status-badge {
-    background-color: #ff9800;
-    color: white;
-    padding: 2px 8px;
-    border-radius: 8px;
-    font-size: 0.75rem;
-  }
-  
-  .order-actions {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0.8rem;
-  }
-  
-  .order-icon {
-    font-size: 1.3rem;
-    cursor: pointer;
-    transition: transform 0.2s;
-  }
-  
-  .order-icon:hover {
-    transform: scale(1.2);
-  }
-  
-  .order-icon.return {
-    color: green;
-  }
-  
-  .order-icon.cancel {
-    color: red;
-  }
 
-  .checkout-page,
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Arial, sans-serif;
+  background-color: #f7f7f7;
+  color: #003366;
+}
+
+
+.checkout-page,
 .payment-page,
-.payment-status-page {
+.payment-status-page,
+.order-confirmed-page {
   max-width: 750px;
-  margin: 6rem auto 3rem; 
+  margin: 6rem auto 3rem;
   background: linear-gradient(to right, #ffffff, #f0f4ff);
   padding: 3rem 3rem 2.5rem;
   border-radius: 1.75rem;
   box-shadow: 0 10px 28px rgba(0, 89, 179, 0.1);
-  font-family: 'Segoe UI', sans-serif;
-  color: #003366;
   font-size: 1.05rem;
   line-height: 1.6;
+  position: relative;
+  z-index: 1;
 }
 
 
 .checkout-page h2,
 .payment-page h2,
-.payment-status-page h2 {
-  font-size: 2.4rem;
+.payment-status-page h2,
+.order-confirmed-page h2 {
+  font-size: 2.2rem;
   margin-bottom: 1.8rem;
-  color: #0059b3;
+  color: #003366;
+  text-align: center;
+  font-weight: 700;
 }
+
 
 .checkout-page input,
 .checkout-page select,
@@ -141,36 +47,97 @@ body {
   background-color: #f9fbff;
   font-size: 1.05rem;
   outline: none;
-  transition: border 0.3s ease;
+  transition: border 0.3s ease, box-shadow 0.3s ease;
 }
 
 .checkout-page input:focus,
 .checkout-page select:focus,
 .payment-page input:focus {
-  border-color: #0059b3;
+  border-color: #003366;
+  box-shadow: 0 0 8px rgba(0, 89, 179, 0.2);
 }
 
+
 .check-btn {
-  background: linear-gradient(to right, #0059b3, #0073e6);
+  background: linear-gradient(to right, #003366, #004080);
   color: white;
   border: none;
   padding: 1rem 2.5rem;
   font-size: 1.1rem;
   border-radius: 14px;
   cursor: pointer;
-  transition: transform 0.2s ease, background 0.3s ease;
+  transition: transform 0.2s ease, background 0.3s ease, box-shadow 0.2s ease;
+  display: inline-block;
+  margin-top: 1rem;
 }
 
 .check-btn:hover {
   transform: scale(1.03);
-  background: linear-gradient(to right, #004a99, #0066cc);
+  background: linear-gradient(to right, #00264d, #003366);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+
+.modal-content {
+  padding: 2rem;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+  max-width: 600px;
+  margin: auto;
+}
+
+.modal-content h2 {
+  color: #2e7d32; 
+  text-align: center;
+  font-size: 1.8rem;
+  margin-bottom: 1.2rem;
+}
+
+.modal-content p {
+  margin: 0.5rem 0;
+  font-size: 0.95rem;
+  color: #444;
+}
+
+.modal-content strong {
+  color: #003366;
+}
+
+
+.order-summary {
+  margin-top: 1.2rem;
+  background: #f9fbff;
+  border-radius: 12px;
+  padding: 1rem;
+  border: 1px solid #e0e0e0;
+}
+
+.order-summary h3 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 0.8rem;
+  color: #003366;
+}
+
+.order-summary p {
+  margin: 0.3rem 0;
+  font-size: 0.9rem;
+  color: #333;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 0.4rem;
+}
+
+.order-summary p:last-child {
+  border-bottom: none;
 }
 
 
 @media (max-width: 600px) {
   .checkout-page,
   .payment-page,
-  .payment-status-page {
+  .payment-status-page,
+  .order-confirmed-page {
     padding: 1.5rem;
     font-size: 1rem;
     margin: 5rem 1rem 2rem;
@@ -180,10 +147,8 @@ body {
     width: 100%;
     padding: 1rem;
   }
-}
 
-/* Success toast background change */
-.Toastify__toast--success {
-  background: #386639 !important; /* यहाँ अपना custom color डालो */
-  color: white !important;         /* text color */
+  .modal-content {
+    padding: 1.5rem;
+  }
 }

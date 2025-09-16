@@ -24,7 +24,7 @@ const Wishlist = ({ wishlistItems, toggleWishlist, setCartItems }) => {
     localStorage.setItem("cartItems", JSON.stringify(updatedCart));
     setCartItems(updatedCart);
 
-    toggleWishlist(product); // remove from wishlist
+    toggleWishlist(product); 
     toast.success(`${product.title} moved to cart 🛒`);
   };
 

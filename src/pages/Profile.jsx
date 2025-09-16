@@ -107,7 +107,7 @@ const Profile = () => {
     );
   }
 
-  // ---- Profile Overview (Default) ----
+  
   return (
     <div className="profile-page">
       <div className="profile-container">

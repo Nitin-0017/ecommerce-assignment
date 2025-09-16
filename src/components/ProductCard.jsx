@@ -47,13 +47,13 @@ const ProductCard = ({ product, addToCart }) => {
     return stars;
   };
 
-  // ✅ Add to Cart with fixed price
+  
   const handleAddToCart = () => {
     const itemToAdd = {
       id: product.id,
       title: product.title,
       image: product.image,
-      price: Math.round(product.price * 83), // fixed price at add time
+      price: Math.round(product.price * 83), 
       quantity: 1
     };
     addToCart(itemToAdd);

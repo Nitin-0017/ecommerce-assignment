@@ -16,10 +16,10 @@ const Navbar = ({ searchQuery, setSearchQuery, scrollToSection }) => {
     setMenuOpen(false);
   
     if (location.pathname === '/home') {
-      // Agar Home page pe ho, directly scroll karo
+      
       if (scrollToSection) scrollToSection(section);
     } else {
-      // Dusre page se Home pe navigate + scroll
+     
       navigate('/home', { state: { scrollTo: section } });
     }
   };

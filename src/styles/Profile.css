@@ -1,5 +1,5 @@
 .profile-page {
-  padding-top: 150px; /* Navbar ki height ke equal */
+  padding-top: 150px; 
   min-height: 100vh;
   background: #f9f9f9;
 }
@@ -15,7 +15,7 @@
   box-shadow: 0 4px 10px rgba(0,0,0,0.08);
 }
 
-/* Profile Picture */
+
 .profile-pic-wrapper {
   position: relative;
   width: 120px;
@@ -54,7 +54,7 @@
   background: #32727a;
 }
 
-/* Options (Edit, Notifications, Shipping, Password) */
+
 .profile-options {
   margin-top: 20px;
 }
@@ -78,7 +78,7 @@
   transform: translateY(-2px);
 }
 
-/* Buttons */
+
 .signout-btn, 
 .save-btn, 
 .back-btn {
@@ -101,7 +101,7 @@
   transform: scale(1.05);
 }
 
-/* Input & Select fields */
+
 input, select {
   display: block;
   width: 90%;
@@ -120,7 +120,7 @@ select:focus {
   outline: none;
 }
 
-/* Section Titles */
+
 h2 {
   color: #3b8d99;
   margin-bottom: 15px;

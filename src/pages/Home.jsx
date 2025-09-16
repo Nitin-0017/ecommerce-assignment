@@ -37,7 +37,7 @@ const Home = ({ addToCart }) => {
   
     const element = refs[section]?.current;
     if (element) {
-      const yOffset = -80; // 👈 navbar ki height ke hisaab se adjust karo (70–100px try karke dekhna)
+      const yOffset = -80; 
       const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
       window.scrollTo({ top: y, behavior: 'smooth' });
     }
@@ -96,12 +96,12 @@ const Home = ({ addToCart }) => {
         scrollToSection={scrollToSection}
       />
 
-      {/* Hero Section */}
+     
       <section className="hero">
         <HeroCarousel slides={heroSlides} />
       </section>
 
-      {/* Best Sellers Section */}
+    
       <section className="section" ref={productsRef}>
         <h2 style={{color:"#003366",fontSize:"30px"}}>Best Sellers</h2>
         <div className="products">
@@ -110,7 +110,7 @@ const Home = ({ addToCart }) => {
           ))}
         </div>
 
-        {/* Product Filters */}
+       
         <div className="product-filters" ref={productRef}>
           <div className="category-boxes">
             <div
@@ -157,12 +157,12 @@ const Home = ({ addToCart }) => {
         )}
       </section>
 
-      {/* About / Testimonials Section */}
+     
       <section className="section" ref={aboutRef}>
         <h2 className="testimonial-heading" style={{color:"#003366"}}>What Our Customers Say</h2>
         <div className="testimonial-wrapper">
           <div className="testimonial-cards">
-            {/* Example testimonial cards */}
+          
             <div className="testimonial-card">
               <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Sarah" />
               <h3>Sarah Johnson</h3>
@@ -226,7 +226,7 @@ const Home = ({ addToCart }) => {
         </div>
       </section>
 
-      {/* Contact Section */}
+    
       <section className="section" ref={contactRef}>
         <div className="contact-section">
           <h1>Contact Us</h1>

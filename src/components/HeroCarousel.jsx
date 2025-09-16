@@ -32,7 +32,7 @@ const slides = [
 const HeroCarousel = () => {
   const [current, setCurrent] = useState(0);
   const length = slides.length;
-  const navigate = useNavigate(); // ✅ navigate hook
+  const navigate = useNavigate(); 
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -50,7 +50,7 @@ const HeroCarousel = () => {
         >
           <div className="carousel-overlay"></div>
           <div className="carousel-content">
-            {/* LEFT SIDE */}
+           
             <div className="carousel-text">
               <h3 className="tagline">{slide.tagline}</h3>
               <h1 className="headline">{slide.title}</h1>
@@ -58,14 +58,14 @@ const HeroCarousel = () => {
               <div className="buttons">
                 <button
                   className="btn btn-primary"
-                  onClick={() => navigate('/products')} // ✅ Products page pe le jayega
+                  onClick={() => navigate('/products')} 
                 >
                   Shop Now
                 </button>
               </div>
             </div>
 
-            {/* RIGHT SIDE */}
+           
             <div className="carousel-image">
               <img src={slide.image} alt={slide.title} />
             </div>
@@ -73,7 +73,6 @@ const HeroCarousel = () => {
         </div>
       ))}
 
-      {/* Dots */}
       <div className="carousel-dots">
         {slides.map((_, index) => (
           <span

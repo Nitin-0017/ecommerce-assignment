@@ -1,10 +1,9 @@
-// components/EmptyState.jsx
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import Lottie from "lottie-react";
 import '../styles/EmptyState.css';
 
-// apne assets folder me empty-cart.json, empty-orders.json, empty-wishlist.json daal lena
+
 import emptyCartAnim from "../assets/empty-cart.json";
 import emptyOrdersAnim from "../assets/empty-orders.json";
 import emptyWishlistAnim from "../assets/empty-wishlist.json";

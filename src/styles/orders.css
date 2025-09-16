@@ -113,19 +113,19 @@
   transition: all 0.2s ease;
 }
 
-/* Return Button */
+
 .btn-return {
-  background-color: #ffc107; /* amber */
+  background-color: #003366;
   color: #fff;
 }
 
 .btn-return:hover {
-  background-color: #e0a800;
+  background-color: #003366;
 }
 
-/* Cancel Button */
+
 .btn-cancel {
-  background-color: #dc3545; /* red */
+  background-color: #dc3545; 
   color: #fff;
 }
 

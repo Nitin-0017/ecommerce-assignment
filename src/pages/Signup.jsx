@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { setToken } from '../utils/auth';
 import '../styles/Login.css';
 
 const Signup = () => {
@@ -15,16 +14,12 @@ const Signup = () => {
       return;
     }
 
-    // Save user credentials (mock backend)
+    
     const user = { username, password };
     localStorage.setItem('registeredUser', JSON.stringify(user));
 
-    // Generate a fake JWT token
-    const fakeToken = btoa(`${username}:${password}`); // base64 string as token
-    setToken(fakeToken);
-    localStorage.setItem('username', username);
-
-    navigate('/home');
+    alert('Signup successful! Please login now.');
+    navigate('/login'); 
   };
 
   return (

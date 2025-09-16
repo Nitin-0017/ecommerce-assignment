@@ -32,11 +32,11 @@
 }
 
 .footer li:hover {
-  color: #00aced; /* light blue hover effect */
+  color: #00aced; 
   cursor: pointer;
 }
 
-/* Social Icons */
+
 .footer-social {
   display: flex;
   gap: 1rem;

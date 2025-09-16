@@ -1,34 +1,31 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { setToken, getToken } from '../utils/auth'; // keep both imports
 import '../styles/Login.css';
 
 const Login = () => {
-  const [email, setEmail] = useState('');
+  const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
 
-  // Redirect if already logged in
   useEffect(() => {
-    if (getToken()) {
-      navigate('/home');
+    const loggedIn = localStorage.getItem('isLoggedIn');
+    if (loggedIn === 'true') {
+      navigate('/home', { replace: true }); 
     }
   }, [navigate]);
-
+  
   const handleSubmit = (e) => {
     e.preventDefault();
+    const storedUser = JSON.parse(localStorage.getItem('registeredUser'));
 
-    const validEmail = "Nitin";
-    const validPassword = "1234";
-
-    if (email === validEmail && password === validPassword) {
-      // Save token in localStorage
-      setToken('your_jwt_token_here'); // You can generate a real JWT later
-      localStorage.setItem('username', email);
+    if (storedUser && username === storedUser.username && password === storedUser.password) {
+      localStorage.setItem('username', username);
+      localStorage.setItem('isLoggedIn', 'true');
       alert('Successfully logged in');
       navigate('/home');
     } else {
-      alert('Invalid email or password');
+      alert('User not found. Please sign up first.');
+      navigate('/signup');
     }
   };
 
@@ -44,16 +41,16 @@ const Login = () => {
       <form className="login-form" onSubmit={handleSubmit}>
         <h2>Login to SwiftKart</h2>
 
-        <label style={{fontSize:"1.2rem"}}>Username</label>
+        <label style={{ fontSize: "1.2rem" }}>Username</label>
         <input
           type="text"
           placeholder="Enter your username"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
           required
         />
 
-        <label style={{fontSize:"1.2rem"}}>Password</label>
+        <label style={{ fontSize: "1.2rem" }}>Password</label>
         <input
           type="password"
           placeholder="Enter your password"
@@ -62,7 +59,6 @@ const Login = () => {
           required
         />
 
-        
         <button type="submit" className="login-btn">Login</button>
       </form>
     </div>

@@ -47,23 +47,51 @@ const OrderConfirmed = ({ setCartItems }) => {
   return (
     <>
       <Navbar />
+
+      
       {showModal && (
-        <Modal title=" Order Confirmed!" onClose={() => setShowModal(false)}>
+        <Modal title="Order Confirmed!" onClose={() => setShowModal(false)}>
+          <p>Your order has been placed successfully </p>
+          <button 
+            className="check-btn" 
+            onClick={() => { setShowModal(false); }}
+          >
+            Close
+          </button>
+        </Modal>
+      )}
+
+      
+      <div className="order-confirmed-page" style={{ padding: "2rem", textAlign: "center", minHeight: "70vh" }}>
+        <h2>Thank You for Placing Your Order!</h2>
+        <p>Your order has been placed successfully.</p>
+
+        <div className="order-summary" style={{ margin: "2rem auto", maxWidth: "600px", textAlign: "left", background: "#f9f9f9", padding: "20px", borderRadius: "12px" }}>
+          <h3>Order Summary</h3>
           <p><strong>Name:</strong> {name}</p>
           <p><strong>Address:</strong> {address}</p>
           <p><strong>Phone:</strong> {phone}</p>
           <p><strong>Payment Method:</strong> {paymentMethod.toUpperCase()}</p>
           <p><strong>Total Payable:</strong> ₹{totalAmount.toLocaleString()}</p>
-          <div style={{ marginTop: '1rem' }}>
+
+          <h4>Items Ordered:</h4>
+          <ul>
             {cartItems?.map((item) => (
-              <p key={item.id}>{item.title} × {item.quantity} = ₹{(item.price * item.quantity).toLocaleString()}</p>
+              <li key={item.id}>
+                {item.title} × {item.quantity} = ₹{(item.price * item.quantity).toLocaleString()}
+              </li>
             ))}
-          </div>
-          <button className="check-btn" onClick={() => { setShowModal(false); navigate('/orders'); }}>
-            View My Orders
-          </button>
-        </Modal>
-      )}
+          </ul>
+        </div>
+
+        <button 
+          className="check-btn" 
+          onClick={() => navigate('/')}
+        >
+          Back to Home
+        </button>
+      </div>
+
       <BottomNav />
       <Footer />
     </>

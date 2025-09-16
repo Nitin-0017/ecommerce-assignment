@@ -1,4 +1,4 @@
-/* Container */
+
 .login-container {
   display: flex;
   max-width: 900px;
@@ -10,7 +10,7 @@
   font-family: 'Roboto', sans-serif;
 }
 
-/* Left Image */
+
 .login-image {
   flex: 1;
   background: #f5f5f5;
@@ -26,14 +26,13 @@
   object-position: center;
 }
 
-/* Right Form */
 .login-form {
   flex: 1;
   padding: 60px 50px;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  gap: 25px; /* ✅ space between elements */
+  gap: 25px; 
 }
 
 .login-form h2 {
@@ -49,7 +48,7 @@
   color: #555;
 }
 
-/* Input Fields */
+
 .login-form input[type="text"],
 .login-form input[type="password"] {
   width: 100%;
@@ -69,7 +68,7 @@
   box-shadow: 0 0 10px rgba(0, 51, 102, 0.2);
 }
 
-/* Buttons */
+
 .login-btn {
   width: 100%;
   padding: 16px 0;
@@ -89,7 +88,7 @@
   transform: translateY(-2px);
 }
 
-/* Secondary Button */
+
 .login-btn.secondary {
   background-color: #ffffff;
   color: #003366;
@@ -102,7 +101,7 @@
   transform: translateY(-2px);
 }
 
-/* Extra spacing for form groups */
+
 .login-form .form-group {
   display: flex;
   flex-direction: column;
@@ -110,7 +109,7 @@
   margin-bottom: 20px;
 }
 
-/* Responsive */
+
 @media (max-width: 768px) {
   .login-container {
     flex-direction: column;

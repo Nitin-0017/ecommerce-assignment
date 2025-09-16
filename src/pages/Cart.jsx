@@ -15,7 +15,7 @@ const Cart = ({ cartItems, handleIncrease, handleDecrease, handleRemove }) => {
     toast.success("Proceeding to checkout ");
   };
 
-  // ✅ Calculate total using fixed price
+ 
   const getTotal = () => {
     return cartItems.reduce(
       (total, item) => total + item.price * item.quantity,
