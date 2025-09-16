@@ -1,65 +1,182 @@
-.hero-carousel {
+.hero {
     position: relative;
-    width: 100%;
-    height: 500px;   /* desktop ke liye height */
-    overflow: hidden;
-    background: white; /* black ya dark bg rakho takki gaps clean lage */
-  }
-  
-  .carousel-slide {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background-repeat: no-repeat;
-    background-size: contain;   /* ✅ maintain aspect ratio */
-    background-position: center center; /* center me align hoga */
-    opacity: 0;
-    transition: opacity 1s ease-in-out;
-  }
-  
-  /* active slide visible */
-  .carousel-slide.active {
-    opacity: 1;
-  }
-  
-  /* overlay dark effect */
-  .carousel-slide::after {
+    height: 600px; /* same as hero-carousel */
+}
+.hero::before {
     content: "";
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
-    height: 100%;
-    background: rgba(0,0,0,0.25); /* halka dark filter */
+    height: 100%; /* now matches hero height */
+    background-color: rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    color: #fff;
+}
+
+
+
+.hero-carousel {
+  position: relative;
+  width: 100%;
+  height: 600px;         /* ✅ fixed height sab slides ke liye */
+  overflow: hidden;
+  background: #fff;
+  margin-top: 80px;
+  border-radius: 20px;
+}
+
+/* Slide */
+.carousel-slide {
+  display: none;
+  width: 100%;
+  height: 100%;
+}
+
+.carousel-slide.active {
+  display: flex;
+  height: 100%;
+}
+
+/* ✅ 2-column layout */
+.carousel-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* text + image */
+  align-items: center;           /* ✅ dono vertically center */
+  justify-content: space-between;
+  width: 100%;
+  margin: 0;
+  gap: 40px;
+  height: 100%;
+  padding: 0 40px;
+  padding-left:80px;
+  padding-right: 0;
+  box-sizing: border-box;
+}
+/* Left text */
+.carousel-text {
+  display: flex;
+  flex-direction: column; /* tagline -> headline -> subtext -> buttons */
+  align-items: flex-start;
+  text-align: left;
+}
+
+.carousel-text .tagline {
+  font-size: 1.2rem;
+  color: #007bff;
+  font-style: italic;
+  margin-bottom: 10px;
+}
+
+.carousel-text .headline {
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.carousel-text .subtext {
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.carousel-text .buttons {
+  display: flex;
+  gap: 15px;
+}
+
+.btn {
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.btn-primary {
+  background: #007bff;
+  color: #fff;
+}
+
+.btn-outline {
+  border: 2px solid #007bff;
+  color: #007bff;
+  background: transparent;
+}
+
+/* Right image */
+.carousel-image {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  height: 100%;
+}
+
+.carousel-image img {
+  width: 100%;
+  max-width: 600px;
+  height: 100%;
+  object-fit: contain; /* ✅ full image dikhegi */
+}
+
+
+/* Dots */
+.carousel-dots {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 10px;
+}
+
+.carousel-dots span {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #bbb;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.carousel-dots span.active {
+  background: #007bff;
+}
+
+/* ✅ Responsive */
+@media (max-width: 768px) {
+  .hero-carousel {
+    height: auto; /* ✅ mobile pe auto adjust */
+    padding: 20px 10px;
   }
-  
-  /* dots navigation */
-  .carousel-dots {
-    position: absolute;
-    bottom: 15px;
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    gap: 10px;
+
+  .carousel-content {
+    grid-template-columns: 1fr;
+    text-align: center;
+    gap: 20px;
+    height: auto;
+    padding: 0;
   }
-  
-  .carousel-dots span {
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-    background: #bbb;
-    cursor: pointer;
-    transition: background 0.3s;
+
+  .carousel-image {
+    justify-content: center;
   }
-  
-  .carousel-dots span.active {
-    background: #fff;
+
+  .carousel-image img {
+    max-width: 100%;
+    height: auto;
   }
-  
-  /* ✅ Mobile view */
-  @media (max-width: 768px) {
-    .hero-carousel {
-      height: 280px; /* mobile ke liye kam height */
-    }
+
+  .carousel-text {
+    align-items: center;
+    text-align: center;
   }
-  
+
+  .carousel-text .headline {
+    font-size: 2rem;
+  }
+}

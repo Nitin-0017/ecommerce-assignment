@@ -34,6 +34,7 @@ const Products = ({ addToCart, searchQuery }) => {
         setPriceRange([min, max]);
       } catch (error) {
         setError('Failed to fetch products');
+        console.log(error)
         setLoading(false);
       }
     };

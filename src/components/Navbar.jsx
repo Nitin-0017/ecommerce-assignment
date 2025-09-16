@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import '../styles/Navbar.css';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 
 const Navbar = ({ searchQuery, setSearchQuery, scrollToSection }) => {
   const [menuOpen, setMenuOpen] = useState(false);
   const navigate = useNavigate();
+  const location = useLocation();
 
   const handleNavigate = (path) => {
     setMenuOpen(false);
@@ -13,10 +14,16 @@ const Navbar = ({ searchQuery, setSearchQuery, scrollToSection }) => {
 
   const handleScroll = (section) => {
     setMenuOpen(false);
-    if (scrollToSection) {
-      scrollToSection(section);
+  
+    if (location.pathname === '/home') {
+      // Agar Home page pe ho, directly scroll karo
+      if (scrollToSection) scrollToSection(section);
+    } else {
+      // Dusre page se Home pe navigate + scroll
+      navigate('/home', { state: { scrollTo: section } });
     }
   };
+  
 
   return (
     <header className="navbar">

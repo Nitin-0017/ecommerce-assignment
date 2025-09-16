@@ -47,6 +47,18 @@ const ProductCard = ({ product, addToCart }) => {
     return stars;
   };
 
+  // ✅ Add to Cart with fixed price
+  const handleAddToCart = () => {
+    const itemToAdd = {
+      id: product.id,
+      title: product.title,
+      image: product.image,
+      price: Math.round(product.price * 83), // fixed price at add time
+      quantity: 1
+    };
+    addToCart(itemToAdd);
+  };
+
   return (
     <div className="product" key={product.id}>
       <div className="wishlist-icon" onClick={toggleWishlist}>
@@ -62,7 +74,7 @@ const ProductCard = ({ product, addToCart }) => {
         <span className="rating-count">({product.rating?.count || 0})</span>
       </div>
 
-      <button className="add-to-cart-btn" onClick={() => addToCart(product)}>
+      <button className="add-to-cart-btn" onClick={handleAddToCart}>
         Add to Cart
       </button>
     </div>

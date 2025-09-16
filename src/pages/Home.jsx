@@ -4,6 +4,7 @@ import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import ProductCard from '../components/ProductCard';
 import BottomNav from '../components/BottomNav';
+import { useLocation } from 'react-router-dom';
 import '../styles/Home.css';
 
 const heroSlides = [
@@ -13,23 +14,19 @@ const heroSlides = [
   { id: 4, image: '/images/banner4.jpg', title: 'Best Sellers' },
 ];
 
+
+
 const Home = ({ addToCart }) => {
   const [products, setProducts] = useState([]);
   const [searchQuery, setSearchQuery] = useState('');
   const [categoryFilter, setCategoryFilter] = useState('');
-  // const [priceFilter, setPriceFilter] = useState('');
-  const priceFilter = ''
-
- 
+  const priceFilter = '';
   const [formData, setFormData] = useState({ name: '', email: '', message: '' });
- 
 
- 
   const productsRef = useRef(null);
   const aboutRef = useRef(null);
   const contactRef = useRef(null);
   const productRef = useRef(null);
-
 
   const scrollToSection = (section) => {
     const refs = {
@@ -37,9 +34,23 @@ const Home = ({ addToCart }) => {
       about: aboutRef,
       contact: contactRef,
     };
-    refs[section]?.current?.scrollIntoView({ behavior: 'smooth' });
+  
+    const element = refs[section]?.current;
+    if (element) {
+      const yOffset = -80; // 👈 navbar ki height ke hisaab se adjust karo (70–100px try karke dekhna)
+      const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
+      window.scrollTo({ top: y, behavior: 'smooth' });
+    }
   };
+  
+  const location = useLocation();
 
+  useEffect(() => {
+    if (location.state?.scrollTo) {
+      scrollToSection(location.state.scrollTo);
+    }
+  }, [location]);
+  
   useEffect(() => {
     fetch('https://fakestoreapi.com/products')
       .then(res => res.json())
@@ -47,11 +58,10 @@ const Home = ({ addToCart }) => {
   }, []);
 
   useEffect(() => {
-  if (searchQuery && productRef.current) {
-    productRef.current.scrollIntoView({ behavior: 'smooth' });
-  }
-}, [searchQuery]);
-
+    if (searchQuery && productRef.current) {
+      productRef.current.scrollIntoView({ behavior: 'smooth' });
+    }
+  }, [searchQuery]);
 
   const filteredProducts = products.filter(product => {
     const matchesSearch = product.title.toLowerCase().includes(searchQuery.toLowerCase());
@@ -64,7 +74,6 @@ const Home = ({ addToCart }) => {
         : priceFilter === '1000+'
         ? product.price > 1000
         : true;
-
     return matchesSearch && matchesCategory && matchesPrice;
   });
 
@@ -75,12 +84,9 @@ const Home = ({ addToCart }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Form data clear kar do
     setFormData({ name: '', email: '', message: '' });
-    // Alert dikhao
     alert('Your message has been sent successfully!');
   };
-  
 
   return (
     <>
@@ -90,10 +96,12 @@ const Home = ({ addToCart }) => {
         scrollToSection={scrollToSection}
       />
 
+      {/* Hero Section */}
       <section className="hero">
-      <HeroCarousel slides={heroSlides} />
+        <HeroCarousel slides={heroSlides} />
       </section>
 
+      {/* Best Sellers Section */}
       <section className="section" ref={productsRef}>
         <h2>Best Sellers</h2>
         <div className="products">
@@ -102,17 +110,7 @@ const Home = ({ addToCart }) => {
           ))}
         </div>
 
-        <div className="hero-1">
-  <div className="calligraphy-text">
-    <svg viewBox="0 0 1200 400" preserveAspectRatio="xMidYMid meet">
-      <text x="50%" y="50%" textAnchor="middle" dominantBaseline="middle">
-        Discover Elegance
-      </text>
-    </svg>
-  </div>
-</div>
-
-
+        {/* Product Filters */}
         <div className="product-filters" ref={productRef}>
           <div className="category-boxes">
             <div
@@ -159,76 +157,76 @@ const Home = ({ addToCart }) => {
         )}
       </section>
 
+      {/* About / Testimonials Section */}
       <section className="section" ref={aboutRef}>
-  <h2 className="testimonial-heading">What Our Customers Say</h2>
-  <div className="testimonial-wrapper">
-    <div className="testimonial-cards">
-      {/* Original 3 Cards */}
-      <div className="testimonial-card">
-        <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Sarah" />
-        <h3>Sarah Johnson</h3>
-        <p className="role">Verified Customer</p>
-        <p className="quote">
-          "I've been shopping here for years. The quality of products and customer service is unmatched. My recent order arrived earlier than expected!"
-        </p>
-        <div className="stars">★★★★★</div>
-      </div>
+        <h2 className="testimonial-heading">What Our Customers Say</h2>
+        <div className="testimonial-wrapper">
+          <div className="testimonial-cards">
+            {/* Example testimonial cards */}
+            <div className="testimonial-card">
+              <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Sarah" />
+              <h3>Sarah Johnson</h3>
+              <p className="role">Verified Customer</p>
+              <p className="quote">
+                "I've been shopping here for years. The quality of products and customer service is unmatched."
+              </p>
+              <div className="stars">★★★★★</div>
+            </div>
 
-      <div className="testimonial-card">
-        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Michael" />
-        <h3>Michael Chen</h3>
-        <p className="role">Verified Customer</p>
-        <p className="quote">
-          "The checkout process was seamless, and the products exceeded my expectations. Will definitely be a returning customer!"
-        </p>
-        <div className="stars">★★★★★</div>
-      </div>
+            <div className="testimonial-card">
+              <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Michael" />
+              <h3>Michael Chen</h3>
+              <p className="role">Verified Customer</p>
+              <p className="quote">
+                "The checkout process was seamless, and the products exceeded my expectations."
+              </p>
+              <div className="stars">★★★★★</div>
+            </div>
 
-      <div className="testimonial-card">
-        <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="Emily" />
-        <h3>Emily Rodriguez</h3>
-        <p className="role">Verified Customer</p>
-        <p className="quote">
-          "I love the variety of products available here. Found exactly what I was looking for and at a competitive price. Highly recommend!"
-        </p>
-        <div className="stars">★★★★★</div>
-      </div>
+            <div className="testimonial-card">
+              <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="Emily" />
+              <h3>Emily Rodriguez</h3>
+              <p className="role">Verified Customer</p>
+              <p className="quote">
+                "I love the variety of products available here. Found exactly what I was looking for!"
+              </p>
+              <div className="stars">★★★★★</div>
+            </div>
 
-      {/* Duplicate 3 Cards for seamless scroll */}
-      <div className="testimonial-card">
-        <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Sarah" />
-        <h3>Sarah Johnson</h3>
-        <p className="role">Verified Customer</p>
-        <p className="quote">
-          "I've been shopping here for years. The quality of products and customer service is unmatched. My recent order arrived earlier than expected!"
-        </p>
-        <div className="stars">★★★★★</div>
-      </div>
+            <div className="testimonial-card">
+              <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Sarah" />
+              <h3>Sarah Johnson</h3>
+              <p className="role">Verified Customer</p>
+              <p className="quote">
+                "I've been shopping here for years. The quality of products and customer service is unmatched."
+              </p>
+              <div className="stars">★★★★★</div>
+            </div>
 
-      <div className="testimonial-card">
-        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Michael" />
-        <h3>Michael Chen</h3>
-        <p className="role">Verified Customer</p>
-        <p className="quote">
-          "The checkout process was seamless, and the products exceeded my expectations. Will definitely be a returning customer!"
-        </p>
-        <div className="stars">★★★★★</div>
-      </div>
+            <div className="testimonial-card">
+              <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Michael" />
+              <h3>Michael Chen</h3>
+              <p className="role">Verified Customer</p>
+              <p className="quote">
+                "The checkout process was seamless, and the products exceeded my expectations."
+              </p>
+              <div className="stars">★★★★★</div>
+            </div>
 
-      <div className="testimonial-card">
-        <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="Emily" />
-        <h3>Emily Rodriguez</h3>
-        <p className="role">Verified Customer</p>
-        <p className="quote">
-          "I love the variety of products available here. Found exactly what I was looking for and at a competitive price. Highly recommend!"
-        </p>
-        <div className="stars">★★★★★</div>
-      </div>
-    </div>
-  </div>
-</section>
+            <div className="testimonial-card">
+              <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="Emily" />
+              <h3>Emily Rodriguez</h3>
+              <p className="role">Verified Customer</p>
+              <p className="quote">
+                "I love the variety of products available here. Found exactly what I was looking for!"
+              </p>
+              <div className="stars">★★★★★</div>
+            </div>
+          </div>
+        </div>
+      </section>
 
-
+      {/* Contact Section */}
       <section className="section" ref={contactRef}>
         <div className="contact-section">
           <h1>Contact Us</h1>
@@ -236,20 +234,17 @@ const Home = ({ addToCart }) => {
             <form className="contact-form" onSubmit={handleSubmit}>
               <label>Name:</label>
               <input type="text" name="name" placeholder="Your name" value={formData.name} onChange={handleChange} required />
-
               <label>Email:</label>
               <input type="email" name="email" placeholder="Your email" value={formData.email} onChange={handleChange} required />
-
               <label>Message:</label>
               <textarea name="message" placeholder="Your message" rows="5" value={formData.message} onChange={handleChange} required></textarea>
-
               <button type="submit">Send</button>
-
             </form>
           </div>
         </div>
       </section>
-      <BottomNav/>
+
+      <BottomNav />
       <Footer />
     </>
   );
