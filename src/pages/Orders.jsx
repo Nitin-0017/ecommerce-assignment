@@ -4,7 +4,7 @@ import Footer from '../components/Footer';
 import BottomNav from '../components/BottomNav';
 import ReturnModal from './ReturnModal';
 import EmptyState from "../components/EmptyState";
-import '../styles/Orders.css';
+import '../styles/Orders-temp.css';
 
 const Orders = () => {
   const [orders, setOrders] = useState([]);
