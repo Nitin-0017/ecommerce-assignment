@@ -152,27 +152,13 @@
 }
 
 /* ✅ Responsive */
-@media (max-width: 768px) {
-  .hero-carousel {
-    height: auto; 
-    padding: 20px 10px;
-  }
-
+/* ✅ Mobile / Tablet ke liye fix */
+@media (max-width: 992px) {
   .carousel-content {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr; 
+    padding: 20px;
+    gap: 30px;
     text-align: center;
-    gap: 20px;
-    height: auto;
-    padding: 0;
-  }
-
-  .carousel-image {
-    justify-content: center;
-  }
-
-  .carousel-image img {
-    max-width: 100%;
-    height: auto;
   }
 
   .carousel-text {
@@ -181,6 +167,55 @@
   }
 
   .carousel-text .headline {
-    font-size: 2rem;
+    font-size: 2.2rem;
+  }
+
+  .carousel-text .subtext {
+    font-size: 1rem;
+  }
+
+  .carousel-image {
+    justify-content: center;
+  }
+
+  .carousel-image img {
+    max-width: 90%;
+    height: auto;
+  }
+}
+
+/* ✅ Chhoti screen ke liye aur compress */
+@media (max-width: 576px) {
+  .hero-carousel {
+    margin-top: 60px;
+    border-radius: 12px;
+  }
+
+  .carousel-text .headline {
+    font-size: 1.6rem;
+  }
+
+  .carousel-text .tagline {
+    font-size: 1rem;
+  }
+
+  .carousel-text .subtext {
+    font-size: 0.9rem;
+  }
+
+  .carousel-text .buttons {
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+  }
+
+  .carousel-text .buttons .btn {
+    width: 100%;
+    text-align: center;
+  }
+
+  .carousel-image img {
+    max-width: 100%;
+    height: auto;
   }
 }

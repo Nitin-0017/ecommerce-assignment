@@ -74,7 +74,7 @@
   height: 32px;
   border: none;
   border-radius: 50%;
-  background-color: #007bff;
+  background-color: #003366;
   color: white;
   font-weight: bold;
   cursor: pointer;
@@ -98,11 +98,13 @@
 
 .remove-btn {
   background: transparent;
+  padding:10px;
   border: none;
-  color: #e74c3c;
+  border-radius: 5px;
+  color: #83342b;
   cursor: pointer;
   font-size: 0.95rem;
-  font-weight: 600;
+  font-weight: 200;
   transition: color 0.3s ease;
 }
 

@@ -49,6 +49,7 @@ const Cart = ({ cartItems, handleIncrease, handleDecrease, handleRemove }) => {
 
                   <button
                       className="remove-btn"
+
                       onClick={() => handleRemove(item.id)} 
                     >
                       Remove
@@ -79,8 +80,8 @@ const Cart = ({ cartItems, handleIncrease, handleDecrease, handleRemove }) => {
                 cursor: 'pointer',
                 transition: 'background-color 0.3s ease',
               }}
-              onMouseEnter={(e) => (e.target.style.backgroundColor = '#218838')}
-              onMouseLeave={(e) => (e.target.style.backgroundColor = '#28a745')}
+              onMouseEnter={(e) => (e.target.style.backgroundColor = '#003366')}
+              onMouseLeave={(e) => (e.target.style.backgroundColor = '#003366')}
             >
               Buy Now
             </button>

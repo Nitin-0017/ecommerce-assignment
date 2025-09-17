@@ -33,7 +33,7 @@ const Signup = () => {
       <form className="login-form" onSubmit={(e) => e.preventDefault()}>
         <h2>Create an Account</h2>
 
-        <label>Create Username</label>
+        <label>Username</label>
         <input
           type="text"
           placeholder="Create Username"
@@ -41,7 +41,7 @@ const Signup = () => {
           onChange={(e) => setUsername(e.target.value)}
         />
 
-        <label>Create Password</label>
+        <label>Password</label>
         <input
           type="password"
           placeholder="Create Password"

@@ -252,7 +252,7 @@ body {
 .contact-container {
   max-width: 600px;
   margin: 0 auto;
-  text-align: left;
+  text-align: center;
 }
 
 .contact-form label {
@@ -280,6 +280,7 @@ body {
   border-radius: 5px;
   margin-top: 1rem;
   cursor: pointer;
+
 }
 
 .contact-section {
