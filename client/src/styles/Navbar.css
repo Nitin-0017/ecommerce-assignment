@@ -1,0 +1,100 @@
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  background: white;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #003366;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  flex-wrap: wrap;
+}
+
+.logo {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #003366;
+}
+
+.hamburger {
+  display: none;
+  font-size: 2rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.nav-link-btn {
+  background: none;
+  border: none;
+  color: #003366;
+  font-weight: bold;
+  font-size: 1rem;
+  cursor: pointer;
+  padding: 0;
+  text-align: left;
+}
+
+.nav-link-btn:hover {
+  text-decoration: underline;
+}
+
+.search-bar {
+  padding: 0.5rem;
+  border-radius: 5px;
+  border: 2px solid #003366;
+  outline: none;
+}
+
+.nav-btn {
+  background-color: #0059b3;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.nav-btn:hover {
+  background-color: #004080;
+}
+
+.username {
+  margin-right: 10px;
+  font-weight: bold;
+}
+
+@media (max-width: 768px) {
+  .hamburger {
+    display: block;
+  }
+
+  .nav-links {
+    flex-direction: column;
+    width: 100%;
+    display: none;
+    margin-top: 1rem;
+  }
+
+  .nav-links.open {
+    display: flex;
+  }
+
+  .nav-links a,
+  .nav-btn,
+  .search-bar {
+    width: 100%;
+    text-align: left;
+  }
+}
