@@ -25,7 +25,7 @@ const limiter = rateLimit({
 
 app.use(helmet());
 app.use(cors({
-  origin: process.env.CLIENT_URL || 'http://localhost:5173',
+  origin: "https://ecommerce-assignment-ready.vercel.app",
   credentials: true
 }));
 app.use(express.json());
