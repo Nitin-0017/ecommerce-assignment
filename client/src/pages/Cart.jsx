@@ -44,7 +44,7 @@ const Cart = () => {
     return cart?.items?.reduce((totalAmount, item) => {
       if (!selectedItemIds.includes(item.product._id)) return totalAmount;
       const price = item.product?.price || 0;
-      return totalAmount + (price * 83 * item.quantity);
+      return totalAmount + (price * item.quantity);
     }, 0) || 0;
   };
 
