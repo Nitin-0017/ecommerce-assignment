@@ -210,7 +210,7 @@ const ProductDetails = () => {
                         </div>
 
                         <p className="text-3xl font-bold text-primary mb-8">
-                            ₹{(product.price * 83).toFixed(0)}
+                            ₹{(product.price).toFixed(0)}
                         </p>
 
                         <p className="text-lg text-text-secondary leading-relaxed mb-10 italic">
@@ -375,7 +375,7 @@ const ProductDetails = () => {
                                     <h3 className="font-bold text-lg text-primary mb-2 line-clamp-1 group-hover:text-accent transition-colors">
                                         {p.title}
                                     </h3>
-                                    <p className="font-bold text-xl text-primary">₹{(p.price * 83).toFixed(0)}</p>
+                                    <p className="font-bold text-xl text-primary">₹{(p.price).toFixed(0)}</p>
                                 </motion.div>
                             ))}
                         </div>

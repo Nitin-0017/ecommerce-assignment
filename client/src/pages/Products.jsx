@@ -83,8 +83,8 @@ const Products = () => {
       setLoading(true);
       const filterParams = {};
       if (filters.category) filterParams.category = filters.category;
-      if (filters.minPrice) filterParams.minPrice = parseFloat(filters.minPrice) / 83;
-      if (filters.maxPrice) filterParams.maxPrice = parseFloat(filters.maxPrice) / 83;
+      if (filters.minPrice) filterParams.minPrice = parseFloat(filters.minPrice) ;
+      if (filters.maxPrice) filterParams.maxPrice = parseFloat(filters.maxPrice) ;
       if (filters.minRating) filterParams.minRating = filters.minRating;
       if (filters.search) filterParams.search = filters.search;
       if (filters.sort) filterParams.sort = filters.sort;
@@ -367,7 +367,7 @@ const Products = () => {
                       </h3>
                       <div className="flex items-center justify-between mb-4">
                         <p className="text-3xl font-bold text-[#020617]">
-                          ₹{(product.price * 83).toFixed(0)}
+                          ₹{(product.price).toFixed(0)}
                         </p>
                       </div>
                       <div className="flex gap-2">

@@ -140,13 +140,13 @@ const Checkout = () => {
   const calculateSubtotal = () => {
     if (buyNowProduct) {
       const price = buyNowProduct.price || 0;
-      return price * 83 * (buyNowProduct.quantity || 1);
+      return price * (buyNowProduct.quantity || 1);
     }
 
     return cart?.items?.reduce((sum, item) => {
       if (selectedItemIds.length > 0 && !selectedItemIds.includes(item.product._id)) return sum;
       const price = item.product?.price || 0;
-      return sum + (price * 83 * item.quantity);
+      return sum + (price * item.quantity);
     }, 0) || 0;
   };
 
@@ -198,10 +198,10 @@ const Checkout = () => {
         items: orderItems,
         shippingAddress,
         paymentMethod: paymentMethod === 'online' ? 'Card' : 'COD',
-        subtotal: subtotal / 83,
-        tax: tax / 83,
-        shipping: shipping / 83,
-        total: total / 83
+        subtotal: subtotal,
+        tax: tax,
+        shipping: shipping,
+        total: total
       };
 
       if (paymentMethod === 'online') {
@@ -555,7 +555,7 @@ const Checkout = () => {
                           <p className="font-semibold line-clamp-1">{buyNowProduct.title}</p>
                           <p className="text-sm text-text-secondary">Qty: {buyNowProduct.quantity}</p>
                         </div>
-                        <p className="font-bold">₹{(buyNowProduct.price * 83 * buyNowProduct.quantity).toFixed(0)}</p>
+                        <p className="font-bold">₹{(buyNowProduct.price * buyNowProduct.quantity).toFixed(0)}</p>
                       </div>
                     ) : (
 
@@ -572,7 +572,7 @@ const Checkout = () => {
                               <p className="font-semibold line-clamp-1">{item.product.title}</p>
                               <p className="text-sm text-text-secondary">Qty: {item.quantity}</p>
                             </div>
-                            <p className="font-bold">₹{(item.product.price * 83 * item.quantity).toFixed(0)}</p>
+                            <p className="font-bold">₹{(item.product.price * item.quantity).toFixed(0)}</p>
                           </div>
                         ))
                     )}

@@ -54,7 +54,7 @@ const ProductCard = ({ product, addToCart }) => {
       id: product.id,
       title: product.title,
       image: product.image,
-      price: Math.round(product.price * 83),
+      price: product.price,
       quantity: 1
     };
     addToCart(itemToAdd);
@@ -68,7 +68,7 @@ const ProductCard = ({ product, addToCart }) => {
 
       <img src={product.image} alt={product.title} />
       <h4 className="hover:text-accent transition-colors">{product.title}</h4>
-      <p className="text-[#020617] font-semibold">₹{Math.round(product.price * 83)}</p>
+      <p className="text-[#020617] font-semibold">₹{product.price}</p>
 
       <div className="rating">
         {renderStars(product.rating?.rate || 0)}{' '}

@@ -158,10 +158,10 @@ const OrderDetails = () => {
                                         <div className="flex-1 min-w-0">
                                             <p className="font-semibold text-primary truncate">{item.product?.title}</p>
                                             <p className="text-sm text-text-secondary">Quantity: {item.quantity}</p>
-                                            <p className="text-sm font-medium mt-1">₹{(item.price * 83).toFixed(0)} / unit</p>
+                                            <p className="text-sm font-medium mt-1">₹{(item.price).toFixed(0)} / unit</p>
                                         </div>
                                         <div className="text-right">
-                                            <p className="font-bold text-primary">₹{(item.price * 83 * item.quantity).toFixed(0)}</p>
+                                            <p className="font-bold text-primary">₹{(item.price * item.quantity).toFixed(0)}</p>
                                         </div>
                                     </div>
                                 ))}
@@ -218,20 +218,20 @@ const OrderDetails = () => {
                             <div className="mt-6 pt-6 border-t border-border space-y-3 px-1">
                                 <div className="flex justify-between text-sm">
                                     <span className="text-text-secondary">Subtotal</span>
-                                    <span>₹{(order.subtotal * 83).toFixed(0)}</span>
+                                    <span>₹{(order.subtotal).toFixed(0)}</span>
                                 </div>
                                 <div className="flex justify-between text-sm">
                                     <span className="text-text-secondary">Tax (18%)</span>
-                                    <span>₹{(order.tax * 83).toFixed(0)}</span>
+                                    <span>₹{(order.tax).toFixed(0)}</span>
                                 </div>
                                 <div className="flex justify-between text-sm">
                                     <span className="text-text-secondary">Shipping</span>
-                                    <span>₹{(order.shipping * 83).toFixed(0)}</span>
+                                    <span>₹{(order.shipping).toFixed(0)}</span>
                                 </div>
                                 <div className="flex justify-between items-center pt-3 border-t border-border mt-3">
                                     <span className="font-bold text-lg">Total</span>
                                     <span className="text-2xl font-bold text-black">
-                                        ₹{(order.total * 83).toFixed(0)}
+                                        ₹{(order.total).toFixed(0)}
                                     </span>
                                 </div>
                             </div>

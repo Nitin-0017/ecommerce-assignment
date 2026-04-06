@@ -71,7 +71,7 @@ const Wishlist = () => {
                 {product.title}
               </h3>
               <p className="text-3xl font-bold text-[#020617] mb-4">
-                ₹{(product.price * 83).toFixed(0)}
+                ₹{(product.price).toFixed(0)}
               </p>
               <Button
                 onClick={(e) => { e.stopPropagation(); navigate('/cart'); }}

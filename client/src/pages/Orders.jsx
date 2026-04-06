@@ -177,7 +177,7 @@ const Orders = () => {
                       <p className="text-sm text-text-secondary">Qty: {item.quantity}</p>
                     </div>
                     <p className="font-bold text-black">
-                      ₹{((item.product?.price || 0) * 83 * item.quantity).toFixed(0)}
+                      ₹{((item.product?.price || 0) * item.quantity).toFixed(0)}
                     </p>
                   </div>
                 ))}
@@ -187,7 +187,7 @@ const Orders = () => {
                 <div>
                   <p className="text-sm text-text-secondary">Total Amount</p>
                   <p className="text-2xl font-bold text-black">
-                    ₹{order.total ? (order.total * 83).toFixed(0) : '0'}
+                    ₹{order.total ? (order.total).toFixed(0) : '0'}
                   </p>
                 </div>
                 <div className="flex gap-2">

@@ -155,7 +155,7 @@ const Cart = () => {
                       {cartItem.product.title}
                     </h3>
                     <p className="text-black font-bold text-2xl mb-4">
-                      ₹{(cartItem.product.price * 83).toFixed(0)}
+                      ₹{(cartItem.product.price).toFixed(0)}
                     </p>
                     <div className="flex items-center gap-4 flex-wrap">
                       <div className="flex items-center border-2 border-border rounded-apple-sm overflow-hidden">
@@ -185,7 +185,7 @@ const Cart = () => {
                   </div>
                   <div className="text-right">
                     <p className="font-bold text-2xl text-black">
-                      ₹{(cartItem.product.price * 83 * cartItem.quantity).toFixed(0)}
+                      ₹{(cartItem.product.price * cartItem.quantity).toFixed(0)}
                     </p>
                   </div>
                 </div>
