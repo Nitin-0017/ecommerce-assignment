@@ -2,9 +2,9 @@
 
 A modern, full-stack E-Commerce application built with the MERN stack (MongoDB, Express.js, React, Node.js). ShopEase provides a seamless shopping experience with a focus on ease of use, robust security, and an aesthetically pleasing interface.
 
-![ShopEase Banner](https://images.unsplash.com/photo-1557821552-17105176677c?auto=format&fit=crop&w=1200&q=80) 
+![ShopEase Banner](client/public/images/Screenshot 2026-04-21 at 10.09.47 PM.png) 
 
-## ✨ Features
+## Features
 
 ### User Experience
 - **Modern UI/UX**: Built with React and styled using Tailwind CSS for a fully responsive and clean layout.
@@ -21,7 +21,7 @@ A modern, full-stack E-Commerce application built with the MERN stack (MongoDB, 
 - **Payment Integration**: Secure payment processing utilizing Razorpay.
 - **Order Tracking & Notifications**: Users get real-time info about their order status and automated cron-based notifications.
 
-## 🛠️ Technology Stack
+## Technology Stack
 
 **Frontend (Client):**
 *   **React** (v19) - UI Library
@@ -39,7 +39,7 @@ A modern, full-stack E-Commerce application built with the MERN stack (MongoDB, 
 *   **JSON Web Tokens (JWT)** - Authentication
 *   **node-cron** - Task Scheduler
 
-## 🚀 Getting Started
+## Getting Started
 
 Follow these instructions to get a copy of the project up and running on your local machine for development and testing purposes.
 
@@ -101,9 +101,9 @@ cd client
 npm run dev
 ```
 
-The application should now be running. The frontend typically runs on `http://localhost:5173/` and expects the backend API at `http://localhost:5000/`.
+The application should now be running. The frontend typically runs on `https://ecommerce-assignment-ready.vercel.app/login` and expects the backend API at `https://pathrise-project.onrender.com`.
 
-## 📂 Project Structure
+## Project Structure
 
 ```
 ShopEase/
@@ -125,6 +125,6 @@ ShopEase/
     └── package.json
 ```
 
-## 📄 License
+## License
 
 This project is licensed under the MIT License.
