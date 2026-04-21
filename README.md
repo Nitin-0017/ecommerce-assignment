@@ -2,7 +2,7 @@
 
 A modern, full-stack E-Commerce application built with the MERN stack (MongoDB, Express.js, React, Node.js). ShopEase provides a seamless shopping experience with a focus on ease of use, robust security, and an aesthetically pleasing interface.
 
-![ShopEase Banner](client/public/images/Screenshot 2026-04-21 at 10.09.47 PM.png) 
+![ShopEase Banner]("client/public/images/Screenshot 2026-04-21 at 10.09.47 PM.png") 
 
 ## Features
 
